@@ -17,6 +17,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   FutureOr<void> loginOnSubmitEvent(LoginOnSubmitEvent event, Emitter<LoginState> emit) async{
     SharedPreferences preferences = await SharedPreferences.getInstance();
       emit(LoginOnLoadState());
+      emit(LoginOnLoadLogoutState());
      try {
        var response =await FirebaseAuth.instance.signInWithEmailAndPassword(email: event.email, password: event.password);
        print(response.user?.email);
