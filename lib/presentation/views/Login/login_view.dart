@@ -29,7 +29,8 @@ class LoginView extends StatelessWidget {
           case LoginSuccessState():
           case LoginActionState():
           case LoginSignupNavigateState():
-         
+          case LoginOnLoadLogoutState():
+             return LoadingWidget();
         }
          return const SizedBox(height: 8,);
       },
