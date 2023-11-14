@@ -71,7 +71,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                               InputWidget(
                                 textInputAction: TextInputAction.next,
                                 editTextType: Strings.name,
-                                titles: Strings.email,
+                                titles: Strings.name,
                                 prefixIcons: const Icon(
                                   Icons.info_outline,
                                   color: lightBlueAccent,
