@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../core/utils/colors.dart';
 
 
 class MyWidget extends StatelessWidget {
@@ -13,7 +14,7 @@ class MyWidget extends StatelessWidget {
                   image: AssetImage('image/back2.jpeg'), fit: BoxFit.fill),
         ),
         child: const Center(
-          child: CircularProgressIndicator(color: Colors.lightBlueAccent,),
+          child: CircularProgressIndicator(color:lightBlueAccent,),
         ),
       ),
     );
