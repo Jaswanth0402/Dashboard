@@ -8,6 +8,7 @@ final class LoginInitialState extends LoginState {}
 
 final class LoginOnLoadState extends LoginState{}
 
+final class LoginOnLoadLogoutState extends LoginState{}
 
 
 final class LoginSuccessState extends LoginActionState{
