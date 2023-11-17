@@ -12,8 +12,8 @@ final class LoginOnLoadLogoutState extends LoginState{}
 
 final class LoginSuccessState extends LoginActionState{
   final String message;
-
-  LoginSuccessState({required this.message});
+  final String? email;
+  LoginSuccessState( {required this.message, required this.email});
  }
 final class LoginErrorState extends LoginActionState{
   final String message;

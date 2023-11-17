@@ -26,7 +26,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         emit(LoginOnLoadLogoutState());
        if(response.user?.email != null){
        preferences.setString("email",response.user!.email.toString());
-       emit(LoginSuccessState(message: Strings.loginsuccess));
+       emit(LoginSuccessState(message: Strings.loginsuccess,email: response.user?.email));
        }
      } catch (e) {
        // ignore: avoid_print
