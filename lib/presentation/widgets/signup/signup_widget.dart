@@ -50,7 +50,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                 child: Column(
                   children: [
                     Container(
-                      padding: EdgeInsets.all(10),
+                      padding: const EdgeInsets.all(10),
                       width: 600,
                       child: Form(
                           key: _key,

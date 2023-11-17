@@ -11,38 +11,46 @@ class TransactionTable extends StatelessWidget {
   Widget build(BuildContext context) {
   return SizedBox(
     width: double.infinity,
-    child: DataTable(
-        columns: const [
-          DataColumn(
-              label: Text(
-            "Number",
-            style: TextStyle(
-                color:lightBlack, fontWeight: FontWeight.bold),
-          )),
-          DataColumn(
-              label: Text(
-            "Date",
-            style: TextStyle(
-                color: lightBlack, fontWeight: FontWeight.bold),
-          )),
-          DataColumn(
-              label: Text("Client name",
-                  style: TextStyle(
-                      color:lightBlack, fontWeight: FontWeight.bold))),
-          DataColumn(
-              label: Text("Amount",
-                  style: TextStyle(
-                      color: lightBlack, fontWeight: FontWeight.bold))),
-          DataColumn(
-              label: Text("Status",
-                  style: TextStyle(
-                      color: lightBlack, fontWeight: FontWeight.bold))),
-        ],
-        rows: List.generate(
-            tableData.length,
-            (index) => coursesDataRow(
-                  tableData[index],
-                ))),
+    child: Row(
+      children: [
+        Expanded(
+          child: FittedBox(
+            child: DataTable(
+                columns: const [
+                  DataColumn(
+                      label: Text(
+                    "Number",
+                    style: TextStyle(
+                        color:lightBlack, fontWeight: FontWeight.bold),
+                  )),
+                  DataColumn(
+                      label: Text(
+                    "Date",
+                    style: TextStyle(
+                        color: lightBlack, fontWeight: FontWeight.bold),
+                  )),
+                  DataColumn(
+                      label: Text("Client name",
+                          style: TextStyle(
+                              color:lightBlack, fontWeight: FontWeight.bold))),
+                  DataColumn(
+                      label: Text("Amount",
+                          style: TextStyle(
+                              color: lightBlack, fontWeight: FontWeight.bold))),
+                  DataColumn(
+                      label: Text("Status",
+                          style: TextStyle(
+                              color: lightBlack, fontWeight: FontWeight.bold))),
+                ],
+                rows: List.generate(
+                    tableData.length,
+                    (index) => coursesDataRow(
+                          tableData[index],
+                        ))),
+          ),
+        ),
+      ],
+    ),
   );
 }
 

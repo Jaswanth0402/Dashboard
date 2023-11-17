@@ -17,7 +17,7 @@ class DashboardSide extends StatelessWidget {
     return SafeArea(
       
         child: Container(
-         
+         padding: const EdgeInsets.all(0),
           height: MediaQuery.of(context).size.height,
           child:SingleChildScrollView(
             child: Column(
