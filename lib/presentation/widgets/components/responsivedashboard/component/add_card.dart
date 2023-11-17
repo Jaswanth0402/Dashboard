@@ -57,32 +57,34 @@ class TransactionDetails extends StatelessWidget {
           ],
         ),
         const SizedBox(
-          height: 10,
+          height: 8,
         ),
-        const Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Text(Strings.lastTransaction),
-          SizedBox(
-            height: 10,
-          ),
-          LastTransaction(
-              icons: Icons.smart_display_rounded,
-              title: Strings.figma,
-              amount: Strings.amoutcard3),
-          SizedBox(
-            height: 10,
-          ),
-          LastTransaction(
-              icons: Icons.add_business_outlined,
-              title:Strings.dribble,
-              amount:Strings.amoutcard4),
-          SizedBox(
-            height: 10,
-          ),
-          LastTransaction(
-              icons: Icons.access_alarm_outlined,
-              title: Strings.agency,
-              amount: Strings.amoutcard4)
-        ]),
+        const Expanded(
+          child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            Text(Strings.lastTransaction),
+            SizedBox(
+              height: 8,
+            ),
+            LastTransaction(
+                icons: Icons.smart_display_rounded,
+                title: Strings.figma,
+                amount: Strings.amoutcard3),
+            SizedBox(
+              height: 8,
+            ),
+            LastTransaction(
+                icons: Icons.add_business_outlined,
+                title:Strings.dribble,
+                amount:Strings.amoutcard4),
+            SizedBox(
+              height: 8,
+            ),
+            LastTransaction(
+                icons: Icons.access_alarm_outlined,
+                title: Strings.agency,
+                amount: Strings.amoutcard4)
+          ]),
+        ),
       ],
     );
   }
