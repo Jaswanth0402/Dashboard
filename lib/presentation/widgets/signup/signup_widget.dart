@@ -21,15 +21,15 @@ class _SignupWidgetState extends State<SignupWidget> {
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
   final GlobalKey<FormState> _key = GlobalKey();
-  
+
   Future<bool> authenticate() async {
     if (_key.currentState!.validate()) {
       BlocProvider.of<SignupBloc>(context).add(SignupOnSubmitEvent(
           email: email.text, password: password.text, name: name.text));
-         
+
       return true;
     }
-         
+
     return false;
   }
 
@@ -132,7 +132,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                   titles: Strings.password,
                                   prefixIcons: const Icon(
                                     Icons.lock_clock_outlined,
-                                    color:lightBlueAccent,
+                                    color: lightBlueAccent,
                                     size: 16,
                                   ),
                                   autoValidateMode:
@@ -157,22 +157,21 @@ class _SignupWidgetState extends State<SignupWidget> {
                                     const Text(
                                       Strings.haveaccount,
                                       textAlign: TextAlign.end,
-                                      style: TextStyle(color:white),
+                                      style: TextStyle(color: white),
                                     ),
                                     const SizedBox(
                                       width: 10,
                                     ),
                                     GestureDetector(
                                       onTap: () {
-                    
-                                        BlocProvider.of<SignupBloc>(context).add(SignupLoginNavigateEvent());
-                                        
+                                        BlocProvider.of<SignupBloc>(context)
+                                            .add(SignupLoginNavigateEvent());
                                       },
                                       child: const Text(
                                         Strings.login,
                                         textAlign: TextAlign.end,
-                                        style: TextStyle(
-                                            color:lightBlueAccent),
+                                        style:
+                                            TextStyle(color: lightBlueAccent),
                                       ),
                                     )
                                   ],

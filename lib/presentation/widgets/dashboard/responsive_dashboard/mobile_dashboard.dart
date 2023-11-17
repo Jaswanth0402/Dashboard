@@ -23,7 +23,7 @@ class MobileDashboard extends StatefulWidget {
 class _MobileDashboardState extends State<MobileDashboard> {
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       appBar: AppBar(
         leading: Builder(
           builder: (BuildContext context) {
@@ -58,14 +58,15 @@ class _MobileDashboardState extends State<MobileDashboard> {
         ],
         backgroundColor: white,
       ),
-      backgroundColor:white,
-      drawer: DrawerWidget(onpressed: () {
-                  BlocProvider.of<DashboardBloc>(context)
-                      .add(DashboardLogoutEvent());
-                },),
+      backgroundColor: white,
+      drawer: DrawerWidget(
+        onpressed: () {
+          BlocProvider.of<DashboardBloc>(context).add(DashboardLogoutEvent());
+        },
+      ),
       body: SafeArea(
           child: Container(
-            padding: const EdgeInsets.all(0),
+        padding: const EdgeInsets.all(0),
         height: MediaQuery.of(context).size.height,
         child: SingleChildScrollView(
           child: Column(children: [
@@ -86,63 +87,50 @@ class _MobileDashboardState extends State<MobileDashboard> {
                 },
               ),
             ),
-            
-               
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          //cart Area
-                          child: Container(
-                            height: 300,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(8),
-                                color: lightgray),
-                            child: const ChartScreen(),
-                          ),
-                        ),
-                        Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 2),
-                            child: const TransactionTable()),
-                     
-              
-                     
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Container(
-                                height: 250,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(8),
-                                  color: white,
-                                ),
-                                child: Image.asset(
-                                  Paths.cardimage,
-                                  height: 300,
-                                  width: 350,
-                                ),
-                              ),
-                            ),
-                          
-                      
-                         Padding(
-                            padding: const EdgeInsets.all(5.0),
-                            child: Container(
-                              height: 310,
-                              width: MediaQuery.of(context).size.width,
-                              padding: const EdgeInsets.symmetric(
-                                  vertical: 10, horizontal: 10),
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(8),
-                                  color: white,
-                                  boxShadow: const [
-                                    BoxShadow(
-                                        blurRadius: 2, blurStyle: BlurStyle.outer)
-                                  ]),
-                              child: const TransactionDetails(),
-                            ),
-                          ),
-                        
-                    
-              
-            
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              //cart Area
+              child: Container(
+                height: 300,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8), color: lightgray),
+                child: const ChartScreen(),
+              ),
+            ),
+            Container(
+                padding: const EdgeInsets.symmetric(horizontal: 2),
+                child: const TransactionTable()),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                height: 250,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8),
+                  color: white,
+                ),
+                child: Image.asset(
+                  Paths.cardimage,
+                  height: 300,
+                  width: 350,
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(5.0),
+              child: Container(
+                height: 310,
+                width: MediaQuery.of(context).size.width,
+                padding:
+                    const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8),
+                    color: white,
+                    boxShadow: const [
+                      BoxShadow(blurRadius: 2, blurStyle: BlurStyle.outer)
+                    ]),
+                child: const TransactionDetails(),
+              ),
+            ),
           ]),
         ),
       )),

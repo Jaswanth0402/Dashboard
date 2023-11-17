@@ -20,38 +20,39 @@ class _DesktopScaffoldState extends State<DesktopDashboard> {
       listenWhen: (previous, current) => current is DashboardActionState,
       buildWhen: (previous, current) => current is! DashboardActionState,
       listener: (context, state) {
-       if(state is DashboardSuccessState){
-        context.router.pushNamed('/');
-       }
+        if (state is DashboardSuccessState) {
+          context.router.pushNamed('/');
+        }
       },
       builder: (context, state) {
-        if(state is DashboardInitialState){
-        return Scaffold(
-          backgroundColor: white,
-          body: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // open drawer
-              Expanded(
-                flex:1,
-                child: DrawerWidget(
-                onpressed: () {
-                  BlocProvider.of<DashboardBloc>(context)
-                      .add(DashboardLogoutEvent());
-                },
-              )),
+        if (state is DashboardInitialState) {
+          return Scaffold(
+            backgroundColor: white,
+            body: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // open drawer
+                Expanded(
+                    flex: 1,
+                    child: DrawerWidget(
+                      onpressed: () {
+                        BlocProvider.of<DashboardBloc>(context)
+                            .add(DashboardLogoutEvent());
+                      },
+                    )),
 
-              // first half of page
-              const Expanded(
-                flex: 6,
-                child: DashboardSide(screen: "desktop"),
-              ),
-            ],
-          ),
-        );
-        }
-        else{
-          return const SizedBox(height: 5,);
+                // first half of page
+                const Expanded(
+                  flex: 6,
+                  child: DashboardSide(screen: "desktop"),
+                ),
+              ],
+            ),
+          );
+        } else {
+          return const SizedBox(
+            height: 5,
+          );
         }
       },
     );
