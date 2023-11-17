@@ -37,7 +37,8 @@ class _SignupWidgetState extends State<SignupWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 410),
+        width: MediaQuery.of(context).size.width,
+        padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 30),
         decoration: const BoxDecoration(
           image: DecorationImage(
               image: AssetImage(Paths.backgroundimage), fit: BoxFit.fill),
@@ -48,134 +49,138 @@ class _SignupWidgetState extends State<SignupWidget> {
               child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    Form(
-                        key: _key,
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 80, vertical: 90),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              const Text(
-                                Strings.signup,
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
+                    Container(
+                      padding: EdgeInsets.all(10),
+                      width: 600,
+                      child: Form(
+                          key: _key,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 80, vertical: 90),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                const Text(
+                                  Strings.signup,
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      color: lightBlueAccent,
+                                      fontSize: 30,
+                                      fontStyle: FontStyle.normal),
+                                ),
+                                const SizedBox(
+                                  height: 20,
+                                ),
+                                InputWidget(
+                                  textInputAction: TextInputAction.next,
+                                  editTextType: Strings.name,
+                                  titles: Strings.name,
+                                  prefixIcons: const Icon(
+                                    Icons.info_outline,
                                     color: lightBlueAccent,
-                                    fontSize: 30,
-                                    fontStyle: FontStyle.normal),
-                              ),
-                              const SizedBox(
-                                height: 20,
-                              ),
-                              InputWidget(
-                                textInputAction: TextInputAction.next,
-                                editTextType: Strings.name,
-                                titles: Strings.name,
-                                prefixIcons: const Icon(
-                                  Icons.info_outline,
-                                  color: lightBlueAccent,
-                                  size: 16,
-                                ),
-                                autoValidateMode:
-                                    AutovalidateMode.onUserInteraction,
-                                autofocus: true,
-                                controller: name,
-                                hintText: Strings.name,
-                              ),
-                              const SizedBox(
-                                height: 20,
-                              ),
-                              InputWidget(
-                                textInputAction: TextInputAction.next,
-                                editTextType: Strings.email,
-                                titles: Strings.email,
-                                prefixIcons: const Icon(
-                                  Icons.email_outlined,
-                                  color: lightBlueAccent,
-                                  size: 16,
-                                ),
-                                autoValidateMode:
-                                    AutovalidateMode.onUserInteraction,
-                                autofocus: false,
-                                controller: email,
-                                hintText: Strings.email,
-                              ),
-                              const SizedBox(
-                                height: 20,
-                              ),
-                              InputWidget(
-                                textInputAction: TextInputAction.next,
-                                editTextType: Strings.mobile,
-                                titles: Strings.mobile,
-                                prefixIcons: const Icon(
-                                  Icons.mobile_friendly_outlined,
-                                  color: lightBlueAccent,
-                                  size: 16,
-                                ),
-                                autoValidateMode:
-                                    AutovalidateMode.onUserInteraction,
-                                autofocus: true,
-                                controller: mobile,
-                                hintText: Strings.mobile,
-                              ),
-                              const SizedBox(
-                                height: 20,
-                              ),
-                              InputWidget(
-                                textInputAction: TextInputAction.done,
-                                editTextType: Strings.password,
-                                titles: Strings.password,
-                                prefixIcons: const Icon(
-                                  Icons.lock_clock_outlined,
-                                  color:lightBlueAccent,
-                                  size: 16,
-                                ),
-                                autoValidateMode:
-                                    AutovalidateMode.onUserInteraction,
-                                controller: password,
-                                hintText: Strings.password,
-                              ),
-                              const SizedBox(
-                                height: 20,
-                              ),
-                              ButtonWidget(
-                                onpressed: authenticate,
-                                value: Strings.signup,
-                              ),
-                              const SizedBox(
-                                height: 20,
-                              ),
-                              Row(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  const Text(
-                                    Strings.haveaccount,
-                                    textAlign: TextAlign.end,
-                                    style: TextStyle(color:white),
+                                    size: 16,
                                   ),
-                                  const SizedBox(
-                                    width: 10,
+                                  autoValidateMode:
+                                      AutovalidateMode.onUserInteraction,
+                                  autofocus: true,
+                                  controller: name,
+                                  hintText: Strings.name,
+                                ),
+                                const SizedBox(
+                                  height: 20,
+                                ),
+                                InputWidget(
+                                  textInputAction: TextInputAction.next,
+                                  editTextType: Strings.email,
+                                  titles: Strings.email,
+                                  prefixIcons: const Icon(
+                                    Icons.email_outlined,
+                                    color: lightBlueAccent,
+                                    size: 16,
                                   ),
-                                  GestureDetector(
-                                    onTap: () {
-
-                                      BlocProvider.of<SignupBloc>(context).add(SignupLoginNavigateEvent());
-                                      
-                                    },
-                                    child: const Text(
-                                      Strings.login,
+                                  autoValidateMode:
+                                      AutovalidateMode.onUserInteraction,
+                                  autofocus: false,
+                                  controller: email,
+                                  hintText: Strings.email,
+                                ),
+                                const SizedBox(
+                                  height: 20,
+                                ),
+                                InputWidget(
+                                  textInputAction: TextInputAction.next,
+                                  editTextType: Strings.mobile,
+                                  titles: Strings.mobile,
+                                  prefixIcons: const Icon(
+                                    Icons.mobile_friendly_outlined,
+                                    color: lightBlueAccent,
+                                    size: 16,
+                                  ),
+                                  autoValidateMode:
+                                      AutovalidateMode.onUserInteraction,
+                                  autofocus: true,
+                                  controller: mobile,
+                                  hintText: Strings.mobile,
+                                ),
+                                const SizedBox(
+                                  height: 20,
+                                ),
+                                InputWidget(
+                                  textInputAction: TextInputAction.done,
+                                  editTextType: Strings.password,
+                                  titles: Strings.password,
+                                  prefixIcons: const Icon(
+                                    Icons.lock_clock_outlined,
+                                    color:lightBlueAccent,
+                                    size: 16,
+                                  ),
+                                  autoValidateMode:
+                                      AutovalidateMode.onUserInteraction,
+                                  controller: password,
+                                  hintText: Strings.password,
+                                ),
+                                const SizedBox(
+                                  height: 20,
+                                ),
+                                ButtonWidget(
+                                  onpressed: authenticate,
+                                  value: Strings.signup,
+                                ),
+                                const SizedBox(
+                                  height: 20,
+                                ),
+                                Row(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    const Text(
+                                      Strings.haveaccount,
                                       textAlign: TextAlign.end,
-                                      style: TextStyle(
-                                          color:lightBlueAccent),
+                                      style: TextStyle(color:white),
                                     ),
-                                  )
-                                ],
-                              ),
-                            ],
-                          ),
-                        )),
+                                    const SizedBox(
+                                      width: 10,
+                                    ),
+                                    GestureDetector(
+                                      onTap: () {
+                    
+                                        BlocProvider.of<SignupBloc>(context).add(SignupLoginNavigateEvent());
+                                        
+                                      },
+                                      child: const Text(
+                                        Strings.login,
+                                        textAlign: TextAlign.end,
+                                        style: TextStyle(
+                                            color:lightBlueAccent),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ],
+                            ),
+                          )),
+                    ),
                   ],
                 ),
               ),

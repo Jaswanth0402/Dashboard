@@ -82,6 +82,12 @@ static const String message="Message";
 static const String payment="Payment";
 static const String dashboard="Dashboard";
 
+//errormessage
+
+static const String loginerror ='please check email/password';
+static const String  signuperror ='Email already registered';
+//successmessage
+static const String loginsuccess ='Login Successfully';
 
 
 

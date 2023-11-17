@@ -5,6 +5,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:meta/meta.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../../core/constants/string.dart';
+
 part 'login_event.dart';
 part 'login_state.dart';
 
@@ -24,11 +26,11 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         emit(LoginOnLoadLogoutState());
        if(response.user?.email != null){
        preferences.setString("email",response.user!.email.toString());
-       emit(LoginSuccessState());
+       emit(LoginSuccessState(message: Strings.loginsuccess));
        }
      } catch (e) {
        // ignore: avoid_print
-       print(e.toString());
+       emit(LoginErrorState(message: Strings.loginerror));
        
      }
   }

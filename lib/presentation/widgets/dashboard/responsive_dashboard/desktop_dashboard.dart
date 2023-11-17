@@ -32,7 +32,9 @@ class _DesktopScaffoldState extends State<DesktopDashboard> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // open drawer
-              Expanded(child: DrawerWidget(
+              Expanded(
+                flex:1,
+                child: DrawerWidget(
                 onpressed: () {
                   BlocProvider.of<DashboardBloc>(context)
                       .add(DashboardLogoutEvent());
@@ -41,8 +43,8 @@ class _DesktopScaffoldState extends State<DesktopDashboard> {
 
               // first half of page
               const Expanded(
-                flex: 5,
-                child: DashboardSide(),
+                flex: 6,
+                child: DashboardSide(screen: "desktop"),
               ),
             ],
           ),

@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:dashboard_task/core/constants/string.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 // ignore: depend_on_referenced_packages
@@ -19,13 +20,12 @@ class SignupBloc extends Bloc<SignupEvent, SignupState> {
     emit(SignupOnLoadState());
     try {
        var response=await FirebaseAuth.instance.createUserWithEmailAndPassword(email: event.email, password: event.password);
-       // ignore: avoid_print
-       print(response.user?.displayName);
+       if(response.user?.email!=null){
        emit(SignupSuccessState());
+       }
     } catch (e) {
-      // ignore: avoid_print
-      print("Error:$e");
-        emit(SignupErrorState(message: e.toString()));
+  
+        emit(SignupErrorState(message: Strings.signuperror));
       
     }
    

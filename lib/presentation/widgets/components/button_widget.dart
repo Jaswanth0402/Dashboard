@@ -14,7 +14,7 @@ class ButtonWidget extends StatelessWidget {
     return Column(
       children: [
         const SizedBox(height: 10,),
-        ElevatedButton(onPressed: onpressed,style:ElevatedButton.styleFrom(padding: const EdgeInsets.symmetric(horizontal: 205,vertical: 22)), child:Text(value!),)
+        ElevatedButton(onPressed: onpressed,style: ElevatedButton.styleFrom(minimumSize: Size(MediaQuery.of(context).size.width*0.45,MediaQuery.of(context).size.height*0.07)), child:Text(value!),)
       ],
     );
   }

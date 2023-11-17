@@ -9,19 +9,20 @@ import '../../components/responsivedashboard/component/mycard.dart';
 import '../../components/responsivedashboard/component/transaction_table.dart';
 
 class DashboardSide extends StatelessWidget {
-  const DashboardSide({super.key});
-
+  final String screen;
+  const DashboardSide({super.key, required this.screen});
+   
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       
         child: Container(
-          padding: EdgeInsets.all(10),
+         
           height: MediaQuery.of(context).size.height,
           child:SingleChildScrollView(
             child: Column(
               children: [
-                  const Header(),
+                  screen=='desktop'?const Header():const SizedBox(height: 2,),
                   Container(
                   padding: const EdgeInsets.all(0.1),
                   width: double.infinity,
@@ -84,7 +85,7 @@ class DashboardSide extends StatelessWidget {
                                 ),
                               ),
                               Padding(
-                                    padding: const EdgeInsets.all(8.0),
+                                    padding: const EdgeInsets.all(5.0),
                                  child: Container(
                                       height: 310,
                                        width: MediaQuery.of(context).size.width,

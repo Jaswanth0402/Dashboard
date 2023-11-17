@@ -38,6 +38,7 @@ dependencies:
   auto_route:
   shared_preferences:
   image_picker:
+  fluttertoast:
   
 
 

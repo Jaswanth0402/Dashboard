@@ -1,7 +1,6 @@
 import 'package:dashboard_task/core/constants/string.dart';
 import 'package:dashboard_task/core/utils/colors.dart';
 import 'package:flutter/material.dart';
-
 import 'histroy_trans.dart';
 
 class TransactionDetails extends StatelessWidget {
@@ -14,7 +13,7 @@ class TransactionDetails extends StatelessWidget {
       children: [
         Row(
           children: [
-            const SizedBox(
+             const SizedBox(
               width: 80,
             ),
             ElevatedButton.icon(
@@ -22,7 +21,9 @@ class TransactionDetails extends StatelessWidget {
               icon: const Icon(
                 Icons.add,
                 color: darkGrey,
+                
               ),
+               
               label: const Text(
                 Strings.addcard,
                 style: TextStyle(color: darkGrey),
@@ -30,6 +31,7 @@ class TransactionDetails extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                   backgroundColor: white,
                   padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 6),
+                  alignment: Alignment.centerRight,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(5),
                       side: const BorderSide(
