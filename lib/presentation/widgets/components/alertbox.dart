@@ -8,7 +8,8 @@ import '../../../bloc/dashboard/bloc/dashboard_bloc.dart';
 
 
 // ignore: non_constant_identifier_names
-Widget LogoutAlert(context){
+Widget LogoutAlert(BuildContext context){
+  DashboardBloc dashboardBloc =DashboardBloc();
   return AlertDialog(
         title: const Text('Are you sure?'),
         content: const SingleChildScrollView(
@@ -30,6 +31,7 @@ Widget LogoutAlert(context){
     onPressed: () {
       BlocProvider.of<DashboardBloc>(context)
                           .add(DashboardLogoutEvent()); // Navigate to login
+      // dashboardBloc.add(DashboardLogoutEvent());
     },
     style: ElevatedButton.styleFrom(backgroundColor: green),
     child: const Text('Yes'),

@@ -3,10 +3,14 @@ import 'dart:convert';
 import 'dart:typed_data';
 import 'package:bloc/bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:image_picker/image_picker.dart';
 // ignore: depend_on_referenced_packages
 import 'package:meta/meta.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../../../data/models/sidebar_items.dart';
+import '../../../presentation/widgets/components/responsivedashboard/component/drawer-widget.dart';
 
 part 'dashboard_event.dart';
 part 'dashboard_state.dart';
