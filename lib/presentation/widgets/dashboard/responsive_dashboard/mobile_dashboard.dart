@@ -7,6 +7,7 @@ import '../../../../core/constants/path.dart';
 import '../../../../core/constants/string.dart';
 import '../../../../core/utils/colors.dart';
 import '../../../../data/constant data/card_data.dart';
+import '../../../../data/models/sidebar_items.dart';
 import '../../components/responsivedashboard/component/add_card.dart';
 import '../../components/responsivedashboard/component/chart_widget.dart';
 import '../../components/responsivedashboard/component/mycard.dart';
@@ -22,6 +23,7 @@ class MobileDashboard extends StatefulWidget {
 
 class _MobileDashboardState extends State<MobileDashboard> {
   @override
+  SidebarItem currentSelecteditem =SidebarItems.home;
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -60,9 +62,10 @@ class _MobileDashboardState extends State<MobileDashboard> {
       ),
       backgroundColor: white,
       drawer: DrawerWidget(
-        onpressed: () {
-          BlocProvider.of<DashboardBloc>(context).add(DashboardLogoutEvent());
-        },
+        // onpressed: () {
+        //   BlocProvider.of<DashboardBloc>(context).add(DashboardLogoutEvent());
+        // }, 
+        currentitem: currentSelecteditem, onSelectedItems: (item) {  },
       ),
       body: SafeArea(
           child: Container(

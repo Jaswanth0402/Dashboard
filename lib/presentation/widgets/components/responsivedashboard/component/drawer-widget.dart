@@ -1,5 +1,6 @@
 // ignore_for_file: file_names
 
+import 'package:dashboard_task/data/models/sidebar_items.dart';
 import 'package:flutter/material.dart';
 import 'package:dashboard_task/bloc/dashboard/bloc/dashboard_bloc.dart';
 import 'package:dashboard_task/core/utils/colors.dart';
@@ -8,10 +9,39 @@ import 'package:dashboard_task/presentation/widgets/components/responsivedashboa
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/constants/string.dart';
 
-class DrawerWidget extends StatelessWidget {
-  final VoidCallback onpressed;
-  const DrawerWidget({super.key, required this.onpressed});
+class SidebarItems{
+  static const home =SidebarItem(Icons.home_max_outlined , Strings.home);
+  static const dashboard =SidebarItem(Icons.dashboard_customize_outlined , Strings.dashboard);
+  static const payment =SidebarItem(Icons.payment_outlined , Strings.payment);
+  static const message =SidebarItem(Icons.message_outlined , Strings.message);
+  static const transaction =SidebarItem(Icons.money_outlined , Strings.transaction);
+  static const settings =SidebarItem(Icons.settings_accessibility_outlined , Strings.settings);
+  static const report =SidebarItem(Icons.report_off_outlined , Strings.report);
+  static const logout =SidebarItem(Icons.logout_outlined , Strings.logout);
 
+  static const all =<SidebarItem>[
+   home,
+   dashboard,
+   payment,
+   transaction,
+   message,
+   settings,
+   report,
+   logout
+  ];
+}
+
+
+
+
+class DrawerWidget extends StatelessWidget {
+  
+  final SidebarItem currentitem;
+  final ValueChanged <SidebarItem> onSelectedItems;
+  const DrawerWidget({super.key,  required this.currentitem, required this.onSelectedItems});
+  
+
+  
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -50,45 +80,20 @@ class DrawerWidget extends StatelessWidget {
                 )
               ],
             )),
-            const ListTileWidget(
-              leadingicons: Icons.home_max_outlined,
-              title: Strings.home,
-            ),
-            const ListTileWidget(
-              leadingicons: Icons.dashboard_customize_outlined,
-              title: Strings.dashboard,
-            ),
-            const ListTileWidget(
-              leadingicons: Icons.payment_outlined,
-              title: Strings.payment,
-            ),
-            const ListTileWidget(
-              leadingicons: Icons.money_off_csred_outlined,
-              title: Strings.transaction,
-            ),
-            const ListTileWidget(
-              leadingicons: Icons.message_outlined,
-              title: Strings.message,
-            ),
-            const ListTileWidget(
-              leadingicons: Icons.settings_accessibility_outlined,
-              title: Strings.settings,
-            ),
-            const ListTileWidget(
-              leadingicons: Icons.report_outlined,
-              title: Strings.report,
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            ListTileWidget(
-              onpressed: onpressed,
-              leadingicons: Icons.logout_outlined,
-              title:Strings.logout,
-            ),
-          ],
+            ...SidebarItems.all.map(ListTileWidget).toList()
+                      ],
         ),
       ),
     );
   }
+  Widget ListTileWidget(SidebarItem item){
+return  ListTile(
+      
+      selectedTileColor: darkGrey,
+      selected: currentitem ==item,
+      leading: Icon(item.icons,color: lightgray,),
+      title: Text(item.title,style: const TextStyle(color: white),),
+      onTap:()=>onSelectedItems(item)
+    );
+}
 }

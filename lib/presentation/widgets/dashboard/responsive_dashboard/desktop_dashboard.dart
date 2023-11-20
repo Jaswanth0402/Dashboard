@@ -1,7 +1,11 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:dashboard_task/bloc/dashboard/bloc/dashboard_bloc.dart';
+import 'package:dashboard_task/data/models/sidebar_items.dart';
+import 'package:dashboard_task/presentation/pages/home/homepage.dart';
+import 'package:dashboard_task/presentation/widgets/components/alertbox.dart';
 import 'package:dashboard_task/presentation/widgets/components/responsivedashboard/component/drawer-widget.dart';
 import 'package:dashboard_task/presentation/widgets/dashboard/responsive_dashboard/dashboard.dart';
+import 'package:dashboard_task/presentation/widgets/loadingwidget/loading_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/utils/colors.dart';
@@ -14,15 +18,15 @@ class DesktopDashboard extends StatefulWidget {
 }
 
 class _DesktopScaffoldState extends State<DesktopDashboard> {
+  SidebarItem currentitem =SidebarItems.home;
   @override
   Widget build(BuildContext context) {
+    
     return BlocConsumer<DashboardBloc, DashboardState>(
       listenWhen: (previous, current) => current is DashboardActionState,
       buildWhen: (previous, current) => current is! DashboardActionState,
       listener: (context, state) {
-        if (state is DashboardSuccessState) {
-          context.router.pushNamed('/');
-        }
+        
       },
       builder: (context, state) {
         if (state is DashboardInitialState) {
@@ -35,16 +39,19 @@ class _DesktopScaffoldState extends State<DesktopDashboard> {
                 Expanded(
                     flex: 1,
                     child: DrawerWidget(
-                      onpressed: () {
-                        BlocProvider.of<DashboardBloc>(context)
-                            .add(DashboardLogoutEvent());
+                      currentitem:currentitem,
+                      onSelectedItems:(item){
+                        setState(() {
+                          currentitem =item;
+                        });
                       },
+                      
                     )),
 
                 // first half of page
-                const Expanded(
+                  Expanded(
                   flex: 6,
-                  child: DashboardSide(screen: "desktop"),
+                  child: getScreen(),
                 ),
               ],
             ),
@@ -56,5 +63,19 @@ class _DesktopScaffoldState extends State<DesktopDashboard> {
         }
       },
     );
+    
   }
+  Widget getScreen(){
+    switch (currentitem) {
+      case SidebarItems.home:
+       return const HomePage();
+      case SidebarItems.dashboard:
+        return const DashboardSide(screen: "desktop",);
+      case SidebarItems.logout:
+        return LogoutAlert(context);
+      default:
+      return const LoadingWidget();
+    }
+  }
+  
 }

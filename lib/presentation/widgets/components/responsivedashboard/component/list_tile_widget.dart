@@ -1,21 +1,13 @@
+import 'package:dashboard_task/data/models/sidebar_items.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/utils/colors.dart';
 
-class ListTileWidget extends StatelessWidget {
-  final IconData leadingicons;
-  final String title;
-  final VoidCallback? onpressed;
-  const ListTileWidget({super.key, required this.leadingicons, required this.title, this.onpressed});
 
-  @override
-  Widget build(BuildContext context) {
-    return  InkWell(
-      onTap: onpressed,
-      child: ListTile(
-        leading: Icon(leadingicons,color: lightgray,),
-        title: Text(title,style: const TextStyle(color: white),),
-      ),
+Widget ListTileWidget(SidebarItem item){
+return  ListTile(
+      leading: Icon(item.icons,color: lightgray,),
+      title: Text(item.title,style: const TextStyle(color: white),),
+      onTap:(){}
     );
-  }
 }

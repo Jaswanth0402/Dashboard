@@ -5,6 +5,7 @@ import '../../../../core/constants/path.dart';
 import '../../../../core/constants/string.dart';
 import '../../../../core/utils/colors.dart';
 import '../../../../data/constant data/card_data.dart';
+import '../../../../data/models/sidebar_items.dart';
 import '../../components/responsivedashboard/component/add_card.dart';
 import '../../components/responsivedashboard/component/chart_widget.dart';
 import '../../components/responsivedashboard/component/mycard.dart';
@@ -18,6 +19,7 @@ class TabletDashboard extends StatefulWidget {
 }
 
 class _TabletDashboardState extends State<TabletDashboard> {
+  SidebarItem currentSelecteditem =SidebarItems.home;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,7 +59,7 @@ class _TabletDashboardState extends State<TabletDashboard> {
       ),
       backgroundColor: white,
       drawer: DrawerWidget(
-        onpressed: () {},
+        onSelectedItems: (item) {  }, currentitem: currentSelecteditem,
       ),
       body: SafeArea(
           child: Container(
