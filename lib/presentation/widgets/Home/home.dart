@@ -12,7 +12,7 @@ class HomeWidget extends StatelessWidget {
       padding: const EdgeInsets.all(10),
       child:  Column(children: [
         Container(
-          
+       padding: const EdgeInsets.all(2),
         child:  Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [

@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:dashboard_task/data/models/sidebar_items.dart';
 import 'package:flutter/material.dart';
 

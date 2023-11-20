@@ -5,11 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../bloc/dashboard/bloc/dashboard_bloc.dart';
-import '../../../core/constants/path.dart';
 
+
+// ignore: non_constant_identifier_names
 Widget LogoutAlert(context){
   return AlertDialog(
-        title: Text('Are you sure?'),
+        title: const Text('Are you sure?'),
         content: const SingleChildScrollView(
           child: ListBody(
             children: <Widget>[

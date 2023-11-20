@@ -1,11 +1,10 @@
-// ignore_for_file: file_names
+// ignore_for_file: file_names, non_constant_identifier_names
 
 import 'package:dashboard_task/data/models/sidebar_items.dart';
 import 'package:flutter/material.dart';
 import 'package:dashboard_task/bloc/dashboard/bloc/dashboard_bloc.dart';
 import 'package:dashboard_task/core/utils/colors.dart';
 import 'package:dashboard_task/presentation/widgets/components/insert_profile_widget.dart';
-import 'package:dashboard_task/presentation/widgets/components/responsivedashboard/component/list_tile_widget.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/constants/string.dart';
 

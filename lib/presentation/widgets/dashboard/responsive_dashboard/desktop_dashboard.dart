@@ -2,7 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:dashboard_task/bloc/dashboard/bloc/dashboard_bloc.dart';
 import 'package:dashboard_task/data/models/sidebar_items.dart';
 import 'package:dashboard_task/presentation/pages/home/homepage.dart';
-import 'package:dashboard_task/presentation/widgets/components/alertbox.dart';
+import 'package:dashboard_task/presentation/widgets/Home/home.dart';
 import 'package:dashboard_task/presentation/widgets/components/responsivedashboard/component/drawer-widget.dart';
 import 'package:dashboard_task/presentation/widgets/dashboard/responsive_dashboard/dashboard.dart';
 import 'package:dashboard_task/presentation/widgets/loadingwidget/loading_widget.dart';
@@ -26,7 +26,9 @@ class _DesktopScaffoldState extends State<DesktopDashboard> {
       listenWhen: (previous, current) => current is DashboardActionState,
       buildWhen: (previous, current) => current is! DashboardActionState,
       listener: (context, state) {
-        
+        if (state is DashboardSuccessState) {
+          context.router.pushNamed('/');
+        }
       },
       builder: (context, state) {
         if (state is DashboardInitialState) {
@@ -68,11 +70,10 @@ class _DesktopScaffoldState extends State<DesktopDashboard> {
   Widget getScreen(){
     switch (currentitem) {
       case SidebarItems.home:
-       return const HomePage();
+       return const HomeWidget();
       case SidebarItems.dashboard:
         return const DashboardSide(screen: "desktop",);
-      case SidebarItems.logout:
-        return LogoutAlert(context);
+      
       default:
       return const LoadingWidget();
     }

@@ -1,8 +1,5 @@
 import 'package:dashboard_task/presentation/widgets/components/responsivedashboard/component/drawer-widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../../../bloc/dashboard/bloc/dashboard_bloc.dart';
 import '../../../../core/constants/path.dart';
 import '../../../../core/constants/string.dart';
 import '../../../../core/utils/colors.dart';
@@ -22,8 +19,8 @@ class MobileDashboard extends StatefulWidget {
 }
 
 class _MobileDashboardState extends State<MobileDashboard> {
-  @override
   SidebarItem currentSelecteditem =SidebarItems.home;
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
