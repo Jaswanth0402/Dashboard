@@ -89,6 +89,24 @@ static const String  signuperror ='Email already registered';
 //successmessage
 static const String loginsuccess ='Login Successfully';
 
-
-
+//setting bar
+static const String profile ='Profile';
+static const String accountsettings ='Account Settings';
+static const String teammember ='Team Member';
+static const String socialprofile ='Social Profile';
+static const String notification ='Notification';
+static const String deleteacc ='Delete Account';
+static const String  deleteoption ='Deleting your account is permanent and cannot br reversed';
+static const String  delete ='Delete';
+static const String  analytics ='Analytics';
+static const String  trackcode ='Google Analytics Tracking code';
+static const String  infotrack ='Track views in your google analytics account';
+static const String  code ='0UNI045692';
+static const String  cancel ='Cancel';
+static const String  save ='Save Changes';
+static const String  requirepass='Password Requirement';
+static const String  passcondition1='1.  At least 8 characters';
+static const String  passcondition2='2.  At least one uppercase letter';
+static const String  passcondition3='3.  At least one number ';
+static const String  passcondition4='4.  At least one  special character';
 }

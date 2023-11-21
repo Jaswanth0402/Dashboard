@@ -48,7 +48,7 @@ class DashboardSide extends StatelessWidget {
                     children: [
                       Padding(
                         padding: const EdgeInsets.all(8.0),
-                        //cart Area
+                        //card Area
                         child: Container(
                           height: 300,
                           decoration: BoxDecoration(

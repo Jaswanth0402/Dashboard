@@ -10,3 +10,4 @@ final class DashboardInsertProfileEvent extends DashboardEvent{
 
   DashboardInsertProfileEvent({required this.source});
 }
+final class DashboardSidebarSelectEvent extends DashboardEvent{}

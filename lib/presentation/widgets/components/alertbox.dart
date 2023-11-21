@@ -9,7 +9,6 @@ import '../../../bloc/dashboard/bloc/dashboard_bloc.dart';
 
 // ignore: non_constant_identifier_names
 Widget LogoutAlert(BuildContext context){
-  DashboardBloc dashboardBloc =DashboardBloc();
   return AlertDialog(
         title: const Text('Are you sure?'),
         content: const SingleChildScrollView(

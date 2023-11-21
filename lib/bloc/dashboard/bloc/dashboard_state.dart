@@ -6,6 +6,7 @@ sealed class DashboardState {}
 final class DashboardActionState extends DashboardState{}
 
 final class DashboardInitialState extends DashboardState {
+  
 }
 
 final class DashboardOnLoadLogoutState extends DashboardState{}
@@ -19,3 +20,5 @@ final class DashboardSuccessProfileState extends DashboardActionState{
 
   DashboardSuccessProfileState({required this.image});
 }
+
+

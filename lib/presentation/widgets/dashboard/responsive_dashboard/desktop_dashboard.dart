@@ -5,9 +5,12 @@ import 'package:dashboard_task/presentation/widgets/Home/home.dart';
 import 'package:dashboard_task/presentation/widgets/components/responsivedashboard/component/drawer-widget.dart';
 import 'package:dashboard_task/presentation/widgets/dashboard/responsive_dashboard/dashboard.dart';
 import 'package:dashboard_task/presentation/widgets/loadingwidget/loading_widget.dart';
+import 'package:dashboard_task/presentation/widgets/settings/settings.dart';
+import 'package:dashboard_task/presentation/widgets/settings/widget/report.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/utils/colors.dart';
+import '../../../../data/models/setting.dart';
 
 class DesktopDashboard extends StatefulWidget {
   const DesktopDashboard({Key? key}) : super(key: key);
@@ -18,6 +21,7 @@ class DesktopDashboard extends StatefulWidget {
 
 class _DesktopScaffoldState extends State<DesktopDashboard> {
   SidebarItem currentitem =SidebarItems.home;
+  SettingItem currentitems =SettingItems.accountsettings;
   @override
   Widget build(BuildContext context) {
     
@@ -72,7 +76,14 @@ class _DesktopScaffoldState extends State<DesktopDashboard> {
        return  const HomeWidget();
       case SidebarItems.dashboard:
         return const DashboardSide(screen: "desktop",);
-      
+      case SidebarItems.settings:
+        return SettingWidget(currentitems: currentitems,onSelectedmenu:(items){
+                        setState(() {
+                          currentitems =items;
+                        });
+                      },);
+      case SidebarItems.report:
+        return const ReportWidget();
       default:
       return const LoadingWidget();
     }
