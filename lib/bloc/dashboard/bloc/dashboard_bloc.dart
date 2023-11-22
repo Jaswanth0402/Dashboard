@@ -5,14 +5,17 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../../../data/models/sidebar_items.dart';
+import '../../../presentation/widgets/dashboard/component/drawer-widget.dart';
 
 part 'dashboard_event.dart';
 part 'dashboard_state.dart';
 
 class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
-  DashboardBloc() : super(DashboardInitialState()) {
+  DashboardBloc() : super(DashboardInitialState(currentitem: SidebarItems.home)) {
     on<DashboardLogoutEvent>(dashboardLogoutEvent);
     on<DashboardInsertProfileEvent>(insertProfile);
+    on<DashboardSidebarSelectEvent>(sidebarEvent);
     
   }
 final ImagePicker _picker = ImagePicker();
@@ -21,7 +24,7 @@ final ImagePicker _picker = ImagePicker();
     SharedPreferences preferences = await SharedPreferences.getInstance();
     emit(DashboardOnLoadLogoutState());
     try {
-      emit(DashboardInitialState());
+      emit(DashboardInitialState(currentitem: SidebarItems.home));
        FirebaseAuth.instance.signOut();
        preferences.clear();
        emit(DashboardSuccessState());  
@@ -50,5 +53,9 @@ final ImagePicker _picker = ImagePicker();
     emit(DashboardSuccessProfileState(image: image!));
   }
   
+  }
+
+  FutureOr<void> sidebarEvent(DashboardSidebarSelectEvent event, Emitter<DashboardState> emit) {
+     emit(DashboardInitialState(currentitem: event.item));
   }
 }

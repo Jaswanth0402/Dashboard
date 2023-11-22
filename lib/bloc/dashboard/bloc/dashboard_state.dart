@@ -5,8 +5,11 @@ sealed class DashboardState {}
 
 final class DashboardActionState extends DashboardState{}
 
+// ignore: must_be_immutable
 final class DashboardInitialState extends DashboardState {
-  
+  SidebarItem ?currentitem =SidebarItems.home;
+
+   DashboardInitialState({ this.currentitem});
 }
 
 final class DashboardOnLoadLogoutState extends DashboardState{}
