@@ -7,7 +7,7 @@ final class DashboardActionState extends DashboardState{}
 
 // ignore: must_be_immutable
 final class DashboardInitialState extends DashboardState {
-  SidebarItem ?currentitem =SidebarItems.home;
+  SidebarItem ?currentitem =SidebarItems.accounts;
 
    DashboardInitialState({ this.currentitem});
 }

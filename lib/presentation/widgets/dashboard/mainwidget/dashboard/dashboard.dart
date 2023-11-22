@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../../bloc/dashboard/bloc/dashboard_bloc.dart';
 import '../../../../../core/constants/path.dart';
 import '../../../../../core/utils/colors.dart';
 import '../../../../../data/constant data/card_data.dart';
+import '../../../components/alertbox.dart';
 import '../../component/add_card.dart';
 import '../../component/chart_widget.dart';
 import '../../component/header.dart';
@@ -21,7 +24,14 @@ class DashboardSide extends StatelessWidget {
       child: SingleChildScrollView(
         child: Column(children: [
           screen == 'desktop'
-              ? const Header()
+              ?  Header(icon: Icons.logout_outlined,onpressed: () {
+                    showDialog(
+                        context: context,
+                        builder: ((contexta) => BlocProvider(
+                              create: (contextb) => DashboardBloc(),
+                              child: LogoutAlert(context),
+                            )));
+                  },)
               : const SizedBox(
                   height: 2,
                 ),

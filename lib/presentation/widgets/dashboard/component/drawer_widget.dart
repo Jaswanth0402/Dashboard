@@ -9,10 +9,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/constants/string.dart';
 
 class SidebarItems {
-  static const home = SidebarItem(Icons.home_max_outlined, Strings.home);
+  static const accounts = SidebarItem(Icons.home_max_outlined, Strings.accounts);
   static const dashboard =
       SidebarItem(Icons.dashboard_customize_outlined, Strings.dashboard);
-  static const payment = SidebarItem(Icons.payment_outlined, Strings.payment);
+  static const myspendings = SidebarItem(Icons.payment_outlined, Strings.myspendings);
   static const message = SidebarItem(Icons.message_outlined, Strings.message);
   static const transaction =
       SidebarItem(Icons.money_outlined, Strings.transaction);
@@ -21,9 +21,9 @@ class SidebarItems {
   static const report = SidebarItem(Icons.report_off_outlined, Strings.report);
 
   static const all = <SidebarItem>[
-    home,
     dashboard,
-    payment,
+    accounts,
+    myspendings,
     transaction,
     message,
     settings,

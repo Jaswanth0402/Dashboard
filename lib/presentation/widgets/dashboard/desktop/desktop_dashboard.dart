@@ -1,14 +1,15 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:dashboard_task/bloc/dashboard/bloc/dashboard_bloc.dart';
 import 'package:dashboard_task/bloc/settings/bloc/setting_bloc.dart';
-import 'package:dashboard_task/presentation/widgets/dashboard/mainwidget/home/home.dart';
+import 'package:dashboard_task/presentation/widgets/dashboard/mainwidget/accounts/accounts.dart';
 import 'package:dashboard_task/presentation/widgets/dashboard/mainwidget/dashboard/dashboard.dart';
+import 'package:dashboard_task/presentation/widgets/dashboard/mainwidget/expense/spending.dart';
 import 'package:dashboard_task/presentation/widgets/loadingwidget/loading_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/utils/colors.dart';
 import '../../../../data/models/setting.dart';
-import '../component/drawer-widget.dart';
+import '../component/drawer_widget.dart';
 import '../mainwidget/settings/settings.dart';
 import '../mainwidget/report/report.dart';
 
@@ -68,7 +69,7 @@ class _DesktopScaffoldState extends State<DesktopDashboard> {
 
   Widget getScreen(currentitem) {
     switch (currentitem) {
-      case SidebarItems.home:
+      case SidebarItems.accounts:
         return const HomeWidget();
       case SidebarItems.dashboard:
         return const DashboardSide(
@@ -81,6 +82,8 @@ class _DesktopScaffoldState extends State<DesktopDashboard> {
         );
       case SidebarItems.report:
         return const ReportWidget();
+      case SidebarItems.myspendings:
+        return const Myspendings();
       default:
         return const LoadingWidget();
     }

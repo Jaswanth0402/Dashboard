@@ -7,7 +7,7 @@ import '../../../../data/constant data/card_data.dart';
 import '../../../../data/models/sidebar_items.dart';
 import '../component/add_card.dart';
 import '../component/chart_widget.dart';
-import '../component/drawer-widget.dart';
+import '../component/drawer_widget.dart';
 import '../component/mycard.dart';
 import '../component/transaction_table.dart';
 
@@ -19,7 +19,7 @@ class TabletDashboard extends StatefulWidget {
 }
 
 class _TabletDashboardState extends State<TabletDashboard> {
-  SidebarItem currentSelecteditem =SidebarItems.home;
+  SidebarItem currentSelecteditem =SidebarItems.accounts;
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -5,7 +5,7 @@ const Color secondPrimaryColor = Color(0xffFA5F31);
 const Color darkBlack = Color(0xff0A0A0A);
 const Color lightBlack = Color(0xff121212);
 const Color darkGrey = Colors.grey;
-const Color blue = Color(0xff1458E1);
+const Color blue = Color.fromARGB(255, 41, 144, 246);
 const Color royalFuchsia = Color(0xffC72396);
 const Color promiscuousPink = Color(0xffB111F1);
 const Color darkYellow = Color(0xffCB915D);
@@ -19,5 +19,8 @@ const Color white =Colors.white;
 const Color lightgray =Color.fromARGB(255, 246, 246, 246) ;
 const Color green =Colors.green;
 const Color purple = Colors.purple;
+const Color marown =Color.fromARGB(255, 168, 43, 24);
+const Color darkpink =Color.fromARGB(255, 189, 89, 123);
+const Color pinkblue =Color.fromARGB(255, 110, 49, 119);
 
 

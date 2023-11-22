@@ -79,7 +79,7 @@ static const String report="Report";
 static const String settings="Settings";
 static const String transaction="Transaction";
 static const String message="Message";
-static const String payment="Payment";
+static const String myspendings="My Spending";
 static const String dashboard="Dashboard";
 
 //errormessage
@@ -109,4 +109,22 @@ static const String  passcondition1='1.  At least 8 characters';
 static const String  passcondition2='2.  At least one uppercase letter';
 static const String  passcondition3='3.  At least one number ';
 static const String  passcondition4='4.  At least one  special character';
+
+
+
+// Accountcard
+static const String accounts = 'Accounts';
+static const String bankname1= 'State bank Of India';
+static const String bankname2= 'ICICI Bank';
+static const String bankname3 = 'Tamilnadu Mercantile Bank';
+static const String bankname4 = 'Axis Bank';
+static const String bank1 = 'SBI';
+static const String bank2 = 'ICICI';
+static const String bank3 = 'TMB';
+static const String accno1 ="**** **** **** 4032";
+static const String accno2 ="**** **** **** 3125";
+static const String accno3 ="**** **** **** 2948";
+static const String accno4 ="**** **** **** 3178";
+
+
 }
