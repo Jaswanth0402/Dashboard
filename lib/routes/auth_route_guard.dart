@@ -5,7 +5,7 @@ class AuthGuard extends AutoRouteGuard {
   @override
   void onNavigation(NavigationResolver resolver, StackRouter router) async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
-   router.pushNamed('/');
+   router.pushNamed('/login');
     var email =preferences.get('email');
     if (email != null) {
       resolver.next(true); 

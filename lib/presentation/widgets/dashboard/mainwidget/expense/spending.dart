@@ -1,8 +1,9 @@
+import 'package:dashboard_task/data/constant%20data/spendingdata.dart';
+import 'package:dashboard_task/presentation/widgets/dashboard/mainwidget/expense/spendingcard.dart';
 import 'package:flutter/material.dart';
 import '../../../../../core/utils/colors.dart';
-import '../../../../../data/constant data/accountdata.dart';
 import '../../component/header.dart';
-import '../accounts/carddetail.dart';
+
 
 class Myspendings extends StatelessWidget {
   const Myspendings({super.key});
@@ -35,14 +36,12 @@ class Myspendings extends StatelessWidget {
           padding: const EdgeInsets.all(10),
           width: double.infinity,
           child: GridView.builder(
-            itemCount: accountData.length,
+            itemCount: spendingdata.length,
             shrinkWrap: true,
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 4, crossAxisSpacing: 10, childAspectRatio: 2),
+                crossAxisCount: 3, crossAxisSpacing: 10, childAspectRatio: 2),
             itemBuilder: (context, index) {
-              return CardDetails(
-                details: accountData[index],
-              );
+              return SpendingCardDetails(detail: spendingdata[index],);
             },
           ),
         ),

@@ -5,14 +5,14 @@ import 'package:dashboard_task/presentation/widgets/dashboard/mainwidget/account
 import 'package:flutter/material.dart';
 
 
-class HomeWidget extends StatefulWidget {
-  const HomeWidget({super.key});
+class AccountWidget extends StatefulWidget {
+  const AccountWidget({super.key});
 
   @override
-  State<HomeWidget> createState() => _HomeWidgetState();
+  State<AccountWidget> createState() => _AccountWidgetState();
 }
 
-class _HomeWidgetState extends State<HomeWidget> {
+class _AccountWidgetState extends State<AccountWidget> {
   @override
   Widget build(BuildContext contexta) {
     return Container(

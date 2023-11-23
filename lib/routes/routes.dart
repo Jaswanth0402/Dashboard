@@ -10,9 +10,13 @@ class AppRouter extends $AppRouter{
   List<AutoRoute> get routes =>[
     CustomRoute(
       transitionsBuilder: TransitionsBuilders.slideLeft,
-      page:  LoginPage.page,
+      page:  HomePage.page,
       initial: true,
-      keepHistory: false,
+      ),
+    CustomRoute(
+      transitionsBuilder: TransitionsBuilders.slideLeft,
+      path: Strings.loginroute,
+      page:  LoginPage.page,
       ),
     CustomRoute(
       transitionsBuilder: TransitionsBuilders.slideLeft,

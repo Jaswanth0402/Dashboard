@@ -8,34 +8,41 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:auto_route/auto_route.dart' as _i4;
+import 'package:auto_route/auto_route.dart' as _i5;
 import 'package:dashboard_task/presentation/pages/dashboard/dashboard_page.dart'
     as _i1;
-import 'package:dashboard_task/presentation/pages/Login/login_page.dart' as _i2;
+import 'package:dashboard_task/presentation/pages/home/homepage.dart' as _i2;
+import 'package:dashboard_task/presentation/pages/Login/login_page.dart' as _i3;
 import 'package:dashboard_task/presentation/pages/signup/signup_page.dart'
-    as _i3;
+    as _i4;
 
-abstract class $AppRouter extends _i4.RootStackRouter {
+abstract class $AppRouter extends _i5.RootStackRouter {
   $AppRouter({super.navigatorKey});
 
   @override
-  final Map<String, _i4.PageFactory> pagesMap = {
+  final Map<String, _i5.PageFactory> pagesMap = {
     DashBoardPage.name: (routeData) {
-      return _i4.AutoRoutePage<dynamic>(
+      return _i5.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const _i1.DashBoardPage(),
       );
     },
-    LoginPage.name: (routeData) {
-      return _i4.AutoRoutePage<dynamic>(
+    HomePage.name: (routeData) {
+      return _i5.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i2.LoginPage(),
+        child: const _i2.HomePage(),
+      );
+    },
+    LoginPage.name: (routeData) {
+      return _i5.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const _i3.LoginPage(),
       );
     },
     SignupPage.name: (routeData) {
-      return _i4.AutoRoutePage<dynamic>(
+      return _i5.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i3.SignupPage(),
+        child: const _i4.SignupPage(),
       );
     },
   };
@@ -43,8 +50,8 @@ abstract class $AppRouter extends _i4.RootStackRouter {
 
 /// generated route for
 /// [_i1.DashBoardPage]
-class DashBoardPage extends _i4.PageRouteInfo<void> {
-  const DashBoardPage({List<_i4.PageRouteInfo>? children})
+class DashBoardPage extends _i5.PageRouteInfo<void> {
+  const DashBoardPage({List<_i5.PageRouteInfo>? children})
       : super(
           DashBoardPage.name,
           initialChildren: children,
@@ -52,13 +59,27 @@ class DashBoardPage extends _i4.PageRouteInfo<void> {
 
   static const String name = 'DashBoardPage';
 
-  static const _i4.PageInfo<void> page = _i4.PageInfo<void>(name);
+  static const _i5.PageInfo<void> page = _i5.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i2.LoginPage]
-class LoginPage extends _i4.PageRouteInfo<void> {
-  const LoginPage({List<_i4.PageRouteInfo>? children})
+/// [_i2.HomePage]
+class HomePage extends _i5.PageRouteInfo<void> {
+  const HomePage({List<_i5.PageRouteInfo>? children})
+      : super(
+          HomePage.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'HomePage';
+
+  static const _i5.PageInfo<void> page = _i5.PageInfo<void>(name);
+}
+
+/// generated route for
+/// [_i3.LoginPage]
+class LoginPage extends _i5.PageRouteInfo<void> {
+  const LoginPage({List<_i5.PageRouteInfo>? children})
       : super(
           LoginPage.name,
           initialChildren: children,
@@ -66,13 +87,13 @@ class LoginPage extends _i4.PageRouteInfo<void> {
 
   static const String name = 'LoginPage';
 
-  static const _i4.PageInfo<void> page = _i4.PageInfo<void>(name);
+  static const _i5.PageInfo<void> page = _i5.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i3.SignupPage]
-class SignupPage extends _i4.PageRouteInfo<void> {
-  const SignupPage({List<_i4.PageRouteInfo>? children})
+/// [_i4.SignupPage]
+class SignupPage extends _i5.PageRouteInfo<void> {
+  const SignupPage({List<_i5.PageRouteInfo>? children})
       : super(
           SignupPage.name,
           initialChildren: children,
@@ -80,5 +101,5 @@ class SignupPage extends _i4.PageRouteInfo<void> {
 
   static const String name = 'SignupPage';
 
-  static const _i4.PageInfo<void> page = _i4.PageInfo<void>(name);
+  static const _i5.PageInfo<void> page = _i5.PageInfo<void>(name);
 }

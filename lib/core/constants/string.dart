@@ -126,5 +126,15 @@ static const String accno2 ="**** **** **** 3125";
 static const String accno3 ="**** **** **** 2948";
 static const String accno4 ="**** **** **** 3178";
 
-
+static const String money1 ="1,000";
+static const String money2 ="1,500";
+static const String money3 ="2,000";
+static const String money4 ="2,500";
+static const String money5 ="3,000";
+static const String money6 ="4,000";
+static const String money7 ="5,000";
+static const String money8 ="6,000";
+static const String total1 ="9,500";
+static const String total2 ="10,000";
+static const String total3 ="7,000";
 }

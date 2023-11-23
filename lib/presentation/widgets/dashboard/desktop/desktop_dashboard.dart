@@ -70,7 +70,7 @@ class _DesktopScaffoldState extends State<DesktopDashboard> {
   Widget getScreen(currentitem) {
     switch (currentitem) {
       case SidebarItems.accounts:
-        return const HomeWidget();
+        return const AccountWidget();
       case SidebarItems.dashboard:
         return const DashboardSide(
           screen: "desktop",

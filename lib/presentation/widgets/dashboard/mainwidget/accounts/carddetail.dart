@@ -2,7 +2,6 @@ import 'package:dashboard_task/core/utils/colors.dart';
 import 'package:dashboard_task/data/models/account_card.dart';
 import 'package:flutter/material.dart';
 
-
 class CardDetails extends StatelessWidget {
   final AccountCardModel details;
   const CardDetails({super.key, required this.details});
