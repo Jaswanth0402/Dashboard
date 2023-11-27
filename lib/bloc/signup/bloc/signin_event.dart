@@ -12,9 +12,15 @@ class SignupOnSubmitEvent extends SignupEvent{
   final String name;
   final String email;
   final String password ;
+  final String image;
+  final String contact;
+  SignupOnSubmitEvent( {required this.email, required this.password,required this.name,required this.image,required this.contact});
 
-  SignupOnSubmitEvent({required this.email, required this.password,required this.name});
+}
+final class InsertProfileEvent extends SignupEvent{
+  final ImageSource source;
 
+  InsertProfileEvent({required this.source});
 }
 
 final class SignupLoginNavigateEvent extends SignupEvent{}

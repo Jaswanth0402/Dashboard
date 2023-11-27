@@ -29,25 +29,7 @@ class ImageProfile extends StatelessWidget {
                     )
                   : Image.asset("image/profile.png",
                       fit: BoxFit.cover, width: 95.0, height: 95.0)),
-          Positioned(
-            bottom: 0.0,
-            right: 6.0,
-            child: InkWell(
-              onTap: () {
-                // showModalBottomSheet(
-                //   context: context,
-                //   builder: ((builder) => bottomSheet(context)),
-                // );
-                BlocProvider.of<DashboardBloc>(context).add(
-                    DashboardInsertProfileEvent(source: ImageSource.gallery));
-              },
-              child: const Icon(
-                Icons.camera_alt,
-                color: white,
-                size: 28.0,
-              ),
-            ),
-          ),
+         
         ],
       ),
     );

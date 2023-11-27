@@ -8,3 +8,4 @@ final class SettingDrawerSelectEvent extends SettingEvent{
 
   SettingDrawerSelectEvent({required this.item});
 }
+

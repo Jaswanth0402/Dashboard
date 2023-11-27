@@ -1,17 +1,12 @@
+import 'package:dashboard_task/firebase_options.dart';
 import 'package:dashboard_task/routes/routes.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 void main()async{
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: const FirebaseOptions(
-      apiKey: "AIzaSyCkLZ9CUMSR0HhoTQ1xJbVjvRbS_jNuyOs",
-      projectId: "dashboard-a2ac9",
-      messagingSenderId: "15944371985",
-      appId: "1:15944371985:web:2834b4336cf818848246b0",
-      ));
-    
+  
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
  return runApp(
   const MyApp()
  );

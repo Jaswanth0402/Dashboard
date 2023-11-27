@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dashboard_task/bloc/signup/bloc/signin_bloc.dart';
 import 'package:dashboard_task/core/constants/string.dart';
 import 'package:dashboard_task/core/utils/colors.dart';
@@ -5,11 +7,14 @@ import 'package:dashboard_task/presentation/widgets/components/button_widget.dar
 import 'package:dashboard_task/presentation/widgets/components/input_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../../../core/constants/path.dart';
 
 class SignupWidget extends StatefulWidget {
-  const SignupWidget({super.key});
+  final String?image;
+  const SignupWidget({super.key, required this.image});
+
 
   @override
   State<SignupWidget> createState() => _SignupWidgetState();
@@ -25,7 +30,7 @@ class _SignupWidgetState extends State<SignupWidget> {
   Future<bool> authenticate() async {
     if (_key.currentState!.validate()) {
       BlocProvider.of<SignupBloc>(context).add(SignupOnSubmitEvent(
-          email: email.text, password: password.text, name: name.text));
+          email: email.text, password: password.text, name: name.text,image:widget.image!,contact: mobile.text));
 
       return true;
     }
@@ -107,6 +112,20 @@ class _SignupWidgetState extends State<SignupWidget> {
                                 ),
                                 const SizedBox(
                                   height: 20,
+                                ),
+                                Row(
+                                  children: [
+                                    ElevatedButton.icon(
+                                        onPressed: () {
+                                          BlocProvider.of<SignupBloc>(context)
+                                              .add(InsertProfileEvent(
+                                                  source: ImageSource.gallery));
+                                        },
+                                        icon: const Icon(
+                                            Icons.upload_file_outlined),
+                                        label: const Text("choose file")),        
+                                 
+                                  ],
                                 ),
                                 InputWidget(
                                   textInputAction: TextInputAction.next,

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "15944371985",
+    "project_id": "dashboard-a2ac9",
+    "storage_bucket": "dashboard-a2ac9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:15944371985:android:af0841fad21316558246b0",
+        "android_client_info": {
+          "package_name": "com.example.dashboard_task"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAURRV-S9OeUH-yYemgwCy551FdI5ra1vM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

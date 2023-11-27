@@ -17,6 +17,7 @@ class AppRouter extends $AppRouter{
       transitionsBuilder: TransitionsBuilders.slideLeft,
       path: Strings.loginroute,
       page:  LoginPage.page,
+       keepHistory: false,
       ),
     CustomRoute(
       transitionsBuilder: TransitionsBuilders.slideLeft,
@@ -29,9 +30,8 @@ class AppRouter extends $AppRouter{
       path: Strings.dashboardroute,
       page: DashBoardPage.page,
       guards: [AuthGuard()],
-      keepHistory: false,
-      
-      )
+      ),
+
      
   ];
 }

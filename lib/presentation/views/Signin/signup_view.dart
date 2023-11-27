@@ -38,12 +38,14 @@ class SignupView extends StatelessWidget {
       builder: (context, state) {
          switch (state) {
           case SignupOnLoadState():
-            return const SignupWidget();
+            return  SignupWidget(image: state.image,);
           case SignupInitial():
           case SignupSuccessState():
             return const SizedBox(height: 10,);
           case SignupActionState():
           return const SizedBox(height: 10,);
+          case InsertProfileSuccessState():
+             return const SizedBox(height: 10,);
           }
         
       
