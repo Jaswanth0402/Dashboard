@@ -12,6 +12,8 @@ class AppRouter extends $AppRouter{
       transitionsBuilder: TransitionsBuilders.slideLeft,
       page:  HomePage.page,
       initial: true,
+      path: '/home',
+      keepHistory: false
       ),
     CustomRoute(
       transitionsBuilder: TransitionsBuilders.slideLeft,
@@ -30,6 +32,7 @@ class AppRouter extends $AppRouter{
       path: Strings.dashboardroute,
       page: DashBoardPage.page,
       guards: [AuthGuard()],
+      keepHistory: false
       ),
 
      

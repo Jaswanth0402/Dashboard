@@ -29,33 +29,38 @@ class _DesktopScaffoldState extends State<DesktopDashboard> {
       buildWhen: (previous, current) => current is! DashboardActionState,
       listener: (context, state) {
         if (state is DashboardSuccessState) {
-          context.router.pushNamed('/');
+          context.router.pushNamed('/home');
         }
       },
       builder: (context, state) {
         if (state is DashboardInitialState) {
-          return Scaffold(
-            backgroundColor: white,
-            body: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // open drawer
-                Expanded(
-                    flex: 1,
-                    child: DrawerWidget(
-                      currentitem: state.currentitem!,
-                      onSelectedItems: (item) {
-                        BlocProvider.of<DashboardBloc>(context)
-                            .add(DashboardSidebarSelectEvent(item: item));
-                      },
-                    )),
-
-                // first half of page
-                Expanded(
-                  flex: 6,
-                  child: getScreen(state.currentitem),
-                ),
-              ],
+          return WillPopScope(
+                onWillPop: ()async{
+                  return false;
+                },
+            child: Scaffold(
+              backgroundColor: white,
+              body: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // open drawer
+                  Expanded(
+                      flex: 1,
+                      child: DrawerWidget(
+                        currentitem: state.currentitem!,
+                        onSelectedItems: (item) {
+                          BlocProvider.of<DashboardBloc>(context)
+                              .add(DashboardSidebarSelectEvent(item: item));
+                        },
+                      )),
+          
+                  // first half of page
+                  Expanded(
+                    flex: 6,
+                    child: getScreen(state.currentitem),
+                  ),
+                ],
+              ),
             ),
           );
         } else {
