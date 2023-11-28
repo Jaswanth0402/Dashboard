@@ -80,7 +80,9 @@ class _DesktopScaffoldState extends State<DesktopDashboard> {
       case SidebarItems.settings:
         return BlocProvider(
           create: (context) => SettingBloc(),
-          child: const SettingWidget(),
+          child: const SettingWidget(
+            screen: 'desktop',
+          ),
         );
       case SidebarItems.report:
         return const ReportWidget();

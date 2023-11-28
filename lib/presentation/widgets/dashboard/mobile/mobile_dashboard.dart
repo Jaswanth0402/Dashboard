@@ -4,9 +4,9 @@ import 'package:dashboard_task/presentation/widgets/dashboard/mobile/mobiledashb
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../bloc/settings/bloc/setting_bloc.dart';
-import '../../../../core/constants/string.dart';
 import '../../../../core/utils/colors.dart';
 import '../../../../data/models/sidebar_items.dart';
+import '../../components/alertbox.dart';
 import '../../components/search_field.dart';
 import '../../loadingwidget/loading_widget.dart';
 import '../component/drawer_widget.dart';
@@ -62,17 +62,21 @@ class _MobileDashboardState extends State<MobileDashboard> {
                   Text('Welcome back!',style:TextStyle(color:Color.fromARGB(255, 104, 103, 103),fontSize: 15),)
                 ],
               ),
-              actions: const [
-                Padding(padding: EdgeInsets.all(9), child: SearchFormField()),
-                SizedBox(
+              actions:  [
+                const Padding(padding: EdgeInsets.all(9), child: SearchFormField()),
+                const SizedBox(
                   width: 10,
                 ),
-                Icon(
-                  Icons.notifications,
-                  color: darkBlack,
-                ),
-                SizedBox(
-                  width: 10,
+               IconButton(onPressed: (){}, icon: const Icon(Icons.notifications_active_outlined,color: darkGrey,)),
+               state.currentitem == SidebarItems.dashboard?
+               IconButton(onPressed:(){ showDialog(
+                        context: context,
+                        builder: ((contexta) => BlocProvider(
+                              create: (contextb) => DashboardBloc(),
+                              child: LogoutAlert(context),
+                            )));} , icon:   const Icon(Icons.logout_outlined,color: darkGrey,)):const SizedBox(width: 1,),
+                const SizedBox(
+                  width: 5,
                 ),
               ],
               backgroundColor: white,
@@ -83,6 +87,7 @@ class _MobileDashboardState extends State<MobileDashboard> {
                       onSelectedItems: (item) {
                         BlocProvider.of<DashboardBloc>(context)
                             .add(DashboardSidebarSelectEvent(item: item));
+                            Navigator.pop(context);
                       },
             ),
             body: getScreen(state.currentitem),
@@ -106,7 +111,9 @@ class _MobileDashboardState extends State<MobileDashboard> {
       case SidebarItems.settings:
         return BlocProvider(
           create: (context) => SettingBloc(),
-          child: const SettingWidget(),
+          child: const SettingWidget(
+            screen: 'mobile',
+          ),
         );
       case SidebarItems.report:
         return const ReportWidget();

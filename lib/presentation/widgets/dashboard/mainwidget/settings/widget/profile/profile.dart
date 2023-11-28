@@ -1,10 +1,6 @@
 import 'package:dashboard_task/core/utils/colors.dart';
-import 'package:dashboard_task/core/utils/firebase/firebase_methods.dart';
-import 'package:dashboard_task/data/models/user_model.dart';
 import 'package:dashboard_task/presentation/widgets/components/insert_profile_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
 import '../../../../../../../core/constants/string.dart';
 
 class ProfileWidget extends StatefulWidget {
@@ -16,42 +12,21 @@ class ProfileWidget extends StatefulWidget {
 
 class _ProfileWidgetState extends State<ProfileWidget> {
 
-String? email;
-UserModal? userdetails;
-Future<String>instance()async{
-   SharedPreferences preferences =await SharedPreferences.getInstance();
-    email = preferences.get("email").toString();
-    print(email);
-    return email.toString();
-}
-  @override
-  void initState(){
-   var response = instance();
-   
-   if(response!=null){
-   dynamic  user = FirebaseMethods.getUser(email:email);
-    
-       userdetails =user;
-    
-   }
-    
-    super.initState();
-  }
   @override
   Widget build(BuildContext context) {
-    return  Container(
+    return  SizedBox(
       height: MediaQuery.of(context).size.height*0.5,
-      decoration: const BoxDecoration(color: darkGrey),
-      child:  Row(
+    
+      child:  const Column(
         children: [
           Expanded(child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-                 ImageProfile(image: userdetails?.image,),
-                 const SizedBox(
+                 ImageProfile(),
+                 SizedBox(
                   height: 20,
                 ),
-                 const Text(
+                 Text(
                   Strings.profilename,
                   style: TextStyle(
                       color: white, fontSize: 15, fontWeight: FontWeight.bold),
@@ -59,38 +34,45 @@ Future<String>instance()async{
             ],
           )),
            Expanded(child:Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text("Email",
+                  Text("Email",
                   style: TextStyle(
                       color: white, fontSize: 15, fontWeight: FontWeight.bold),),
-                  const SizedBox(width: 10,),
-                  Text(userdetails!.email,
-                  style: const TextStyle(
+                  SizedBox(width: 10,),
+                  Text("jgjaswanthjk6@gmail.com",
+                  style: TextStyle(
                       color: white, fontSize: 15, fontWeight: FontWeight.bold),)
                 ],
               ),
               
-              const Row(
+              Row(
+             crossAxisAlignment: CrossAxisAlignment.center,
+             mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text("Password",
                   style: TextStyle(
                       color: white, fontSize: 15, fontWeight: FontWeight.bold),),
                       SizedBox(width: 10,),
-                  Text("jgjaswanthjk6@gmail.com",
+                  Text("Logan0402@",
                   style: TextStyle(
                       color: white, fontSize: 15, fontWeight: FontWeight.bold),)
                 ],
               ),
-              const Row(
+              Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text("Contact",
                   style: TextStyle(
                       color: white, fontSize: 15, fontWeight: FontWeight.bold),),
                       SizedBox(width: 10,),
-                  Text("jgjaswanthjk6@gmail.com",
+                  Text("6374884174",
                   style: TextStyle(
                       color: white, fontSize: 15, fontWeight: FontWeight.bold),)
                 ],

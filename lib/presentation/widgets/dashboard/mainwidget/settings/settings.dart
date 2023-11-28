@@ -19,16 +19,14 @@ class SettingItems {
   static const all = <SettingItem>[
     profile,
     accountsettings,
-    teammember,
-    socialprofile,
-    notification
+    
   ];
 }
 
 class SettingWidget extends StatelessWidget {
-
+final String screen;
   const SettingWidget(
-      {super.key});
+      {super.key, required this.screen});
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +35,7 @@ class SettingWidget extends StatelessWidget {
         if(state is SettingInitialState){
         return SafeArea(
           child: Container(
-            color: darkGrey,
+            decoration: const BoxDecoration(image: DecorationImage(image: AssetImage('image/back2.jpeg',),fit: BoxFit.cover)),
             child: Column(
               children: [
                 Container(
@@ -71,10 +69,30 @@ class SettingWidget extends StatelessWidget {
                     padding: const EdgeInsets.all(10),
                     height: MediaQuery.of(context).size.height,
                     width: MediaQuery.of(context).size.width,
-                    child: Row(children: [
+                    child:
+                    screen =='mobile'?
+                    Column(children: [
                       Expanded(
                           flex: 1,
                           child: SettingsDrawer(
+                            screen:screen,
+                            currentitems: state.currentitem,
+            onSelectedmenu: (items) {
+               BlocProvider.of<SettingBloc>(context).add(SettingDrawerSelectEvent(item: items));
+            },
+                          )),
+                      const SizedBox(
+                        width: 18,
+                      ),
+                      Expanded(
+                          flex: 5,
+                          child: SingleChildScrollView(child: getScreen(state.currentitem)))
+                    ]):
+                     Row(children: [
+                      Expanded(
+                          flex: 1,
+                          child: SettingsDrawer(
+                            screen: screen,
                             currentitems: state.currentitem,
             onSelectedmenu: (items) {
                BlocProvider.of<SettingBloc>(context).add(SettingDrawerSelectEvent(item: items));
@@ -106,12 +124,12 @@ class SettingWidget extends StatelessWidget {
   Widget getScreen(currentitems) {
     switch (currentitems) {
       case SettingItems.accountsettings:
-        return const AccountSetting();
+        return  AccountSetting(screen:screen);
       case SettingItems.profile:
         return const ProfileWidget();
       default:
-        return Container(
-          child: const SizedBox(
+        return const SizedBox(
+          child: SizedBox(
             height: 20,
           ),
         );

@@ -1,10 +1,13 @@
 
 
+// ignore_for_file: avoid_print
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../../../data/models/response_model.dart';
 
 final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+// ignore: non_constant_identifier_names
 final CollectionReference _Collection = _firestore.collection('user');
 class FirebaseMethods{
 
@@ -50,7 +53,7 @@ static Future<Response> addUser ({
   (querySnapshot) {
     print("Successfully completed");
     for (var docSnapshot in querySnapshot.docs) {
-      // print('${docSnapshot.id} => ${docSnapshot.data()}');
+      print('${docSnapshot.id} => ${docSnapshot.data()}');
     }
   },
   onError: (e) => print("Error completing: $e"),

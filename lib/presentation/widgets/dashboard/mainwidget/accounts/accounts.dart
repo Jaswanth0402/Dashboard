@@ -22,8 +22,9 @@ class _AccountWidgetState extends State<AccountWidget> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-              widget.screen=='mobile'? const SizedBox(height: 2,)
-                :const Header(),
+            
+              widget.screen=='desktop'? 
+                const Header():const SizedBox(height: 2,),
                      const Padding(
                        padding: EdgeInsets.symmetric(horizontal: 10,vertical: 15),
                        child: Column(
@@ -37,9 +38,18 @@ class _AccountWidgetState extends State<AccountWidget> {
                          ],
                        ),
                      ),
-                
-                    widget.screen =='mobile'?
-                     Container(
+                       getcard(widget.screen)
+          
+                    ]),
+      ),
+    );
+  }
+
+  Widget getcard(screen){
+    switch (screen) {
+      case 'mobile':
+      return
+        Container(
               padding: const EdgeInsets.all(5),
               width: double.infinity,
               child: GridView.builder(
@@ -54,8 +64,29 @@ class _AccountWidgetState extends State<AccountWidget> {
                   );
                 },
               ),
-            ):
-             Container(
+            );
+      case 'Tablet':
+          return
+           Container(
+              padding: const EdgeInsets.all(5),
+              width: double.infinity,
+              child: GridView.builder(
+                itemCount: accountData.length,
+                shrinkWrap: true,
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2, crossAxisSpacing: 10, childAspectRatio: 2.8),
+                itemBuilder: (context,index) {
+                  return  CardDetails(
+                   
+                    details: accountData[index],
+                  );
+                },
+              ),
+            );
+        
+      default:
+        return 
+           Container(
               padding: const EdgeInsets.all(10),
               width: double.infinity,
               child: GridView.builder(
@@ -70,10 +101,9 @@ class _AccountWidgetState extends State<AccountWidget> {
                   );
                 },
               ),
-            )
-          
-                    ]),
-      ),
-    );
+            );
+
+    }
+
   }
 }

@@ -15,8 +15,8 @@ class Myspendings extends StatelessWidget {
       padding: const EdgeInsets.all(10),
       child: SingleChildScrollView(
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          screen=='mobile'? const SizedBox(height: 2,)
-                :const Header(),
+          screen=='desktop'? 
+                const Header():const SizedBox(height: 2,),
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
             child: Column(
@@ -35,8 +35,16 @@ class Myspendings extends StatelessWidget {
               ],
             ),
           ),
-          screen =='mobile'?
-          Container(
+           getcard(screen),
+        ]),
+      ),
+    );
+  }
+   Widget getcard(screen){
+    switch (screen) {
+      case 'mobile':
+      return
+         Container(
             padding: const EdgeInsets.all(10),
             width: double.infinity,
             child: GridView.builder(
@@ -48,7 +56,26 @@ class Myspendings extends StatelessWidget {
                 return SpendingCardDetails(detail: spendingdata[index],);
               },
             ),
-          ):Container(
+          );
+      case 'Tablet':
+          return
+            Container(
+            padding: const EdgeInsets.all(10),
+            width: double.infinity,
+            child: GridView.builder(
+              itemCount: spendingdata.length,
+              shrinkWrap: true,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2, crossAxisSpacing: 10, childAspectRatio: 1.8),
+              itemBuilder: (context, index) {
+                return SpendingCardDetails(detail: spendingdata[index],);
+              },
+            ),
+          );
+        
+      default:
+        return 
+        Container(
             padding: const EdgeInsets.all(10),
             width: double.infinity,
             child: GridView.builder(
@@ -60,9 +87,10 @@ class Myspendings extends StatelessWidget {
                 return SpendingCardDetails(detail: spendingdata[index],);
               },
             ),
-          ),
-        ]),
-      ),
-    );
+          );
+           
+
+    }
+
   }
 }

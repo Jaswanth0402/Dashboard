@@ -4,7 +4,8 @@ import '../../../../../../../core/utils/colors.dart';
 
 
 class AccountSetting extends StatelessWidget {
-  const AccountSetting({super.key});
+  final String screen;
+  const AccountSetting({super.key, required this.screen});
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +42,7 @@ class AccountSetting extends StatelessWidget {
                       height: 3,
                     ),
                     SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.3,
+                      width: MediaQuery.of(context).size.width * 0.5,
                       height: 34,
                       child: const TextField(
                         decoration: InputDecoration(
@@ -61,7 +62,7 @@ class AccountSetting extends StatelessWidget {
                       height: 3,
                     ),
                     SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.3,
+                      width: MediaQuery.of(context).size.width * 0.5,
                       height: 34,
                       child: const TextField(
                         decoration: InputDecoration(
@@ -95,6 +96,7 @@ class AccountSetting extends StatelessWidget {
                   ],
                 ),
               ),
+              screen=='desktop'?
               Container(
                 padding: const EdgeInsets.all(15),
                 height: 150,
@@ -122,7 +124,7 @@ class AccountSetting extends StatelessWidget {
                     Text(Strings.passcondition4),
                   ],
                 ),
-              )
+              ):const SizedBox(height: 5,),
             ],
           ),
         ),
@@ -154,7 +156,7 @@ class AccountSetting extends StatelessWidget {
                   height: 3,
                 ),
                 SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.3,
+                  width: MediaQuery.of(context).size.width * 0.5,
                   height: 34,
                   child: const TextField(
                     decoration: InputDecoration(

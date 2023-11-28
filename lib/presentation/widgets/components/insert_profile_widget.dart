@@ -1,10 +1,6 @@
 import 'dart:convert';
-
-import 'package:dashboard_task/bloc/dashboard/bloc/dashboard_bloc.dart';
-import 'package:dashboard_task/core/utils/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:image_picker/image_picker.dart';
+
 
 
 class ImageProfile extends StatelessWidget {

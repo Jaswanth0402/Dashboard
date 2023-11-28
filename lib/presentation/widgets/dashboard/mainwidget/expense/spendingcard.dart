@@ -47,7 +47,7 @@ class SpendingCardDetails extends StatelessWidget {
                             ),  
                         ),
                   ),
-                  Expanded(child: Container(
+                  Expanded(child: SizedBox(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [

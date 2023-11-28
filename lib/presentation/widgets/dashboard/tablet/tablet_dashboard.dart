@@ -1,15 +1,19 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:dashboard_task/presentation/widgets/components/search_field.dart';
+import 'package:dashboard_task/presentation/widgets/dashboard/mobile/mobiledashboard_widget.dart';
 import 'package:flutter/material.dart';
-import '../../../../core/constants/path.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../bloc/dashboard/bloc/dashboard_bloc.dart';
+import '../../../../bloc/settings/bloc/setting_bloc.dart';
 import '../../../../core/constants/string.dart';
 import '../../../../core/utils/colors.dart';
-import '../../../../data/constant data/card_data.dart';
 import '../../../../data/models/sidebar_items.dart';
-import '../component/add_card.dart';
-import '../component/chart_widget.dart';
+import '../../loadingwidget/loading_widget.dart';
 import '../component/drawer_widget.dart';
-import '../component/mycard.dart';
-import '../component/transaction_table.dart';
+import '../mainwidget/accounts/accounts.dart';
+import '../mainwidget/expense/spending.dart';
+import '../mainwidget/report/report.dart';
+import '../mainwidget/settings/settings.dart';
 
 class TabletDashboard extends StatefulWidget {
   const TabletDashboard({super.key});
@@ -22,123 +26,97 @@ class _TabletDashboardState extends State<TabletDashboard> {
   SidebarItem currentSelecteditem =SidebarItems.accounts;
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          leading: Builder(
-            builder: (BuildContext context) {
-              return IconButton(
-                icon: const Icon(
-                  Icons.menu,
+    return BlocConsumer<DashboardBloc, DashboardState>(
+      listenWhen: (previous, current) => current is DashboardActionState,
+      buildWhen: (previous, current) => current is! DashboardActionState,
+      listener: (context, state) {
+       if (state is DashboardSuccessState) {
+          context.router.pushNamed('/');
+        }
+      },
+      builder: (context, state) {
+        if(state is DashboardInitialState){
+        return SafeArea(
+          child: Scaffold(
+            appBar: AppBar(
+              leading: Builder(
+                builder: (BuildContext context) {
+                  return IconButton(
+                    icon: const Icon(
+                      Icons.menu,
+                      color: darkBlack,
+                    ),
+                    onPressed: () {
+                      Scaffold.of(context).openDrawer();
+                    },
+                    tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+                  );
+                },
+              ),
+              title: const Text(
+                Strings.dashboard,
+                style: TextStyle(color: darkBlack),
+              ),
+              actions: const [
+                Padding(padding: EdgeInsets.all(5), child: SearchFormField()),
+                SizedBox(
+                  width: 10,
+                ),
+                Icon(
+                  Icons.notifications,
                   color: darkBlack,
                 ),
-                onPressed: () {
-                  Scaffold.of(context).openDrawer();
-                },
-                tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
-              );
-            },
-          ),
-          title: const Text(
-            Strings.dashboard,
-            style: TextStyle(color: darkBlack),
-          ),
-          actions: const [
-            Padding(padding: EdgeInsets.all(5), child: SearchFormField()),
-            SizedBox(
-              width: 10,
-            ),
-            Icon(
-              Icons.notifications,
-              color: darkBlack,
-            ),
-            SizedBox(
-              width: 10,
-            ),
-          ],
-          backgroundColor: white,
-        ),
-        backgroundColor: white,
-        drawer: DrawerWidget(
-          onSelectedItems: (item) {  }, currentitem: currentSelecteditem,
-        ),
-        body: Container(
-          padding: const EdgeInsets.all(0),
-          height: MediaQuery.of(context).size.height,
-          child: SingleChildScrollView(
-        child: Column(children: [
-          Container(
-            padding: const EdgeInsets.all(0.1),
-            width: double.infinity,
-            child: GridView.builder(
-              itemCount: cardData.length,
-              shrinkWrap: true,
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 14,
-                  childAspectRatio: 2),
-              itemBuilder: (context, index) {
-                return MyBox(
-                  details: cardData[index],
-                );
-              },
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            //cart Area
-            child: Container(
-              height: 300,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8), color: lightgray),
-              child: const ChartScreen(),
-            ),
-          ),
-          Container(
-              padding: const EdgeInsets.symmetric(horizontal: 2),
-              child: const TransactionTable()),
-          Row(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  height: 250,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8),
-                    color: white,
-                  ),
-                  child: Image.asset(
-                    Paths.cardimage,
-                    height: 300,
-                    width: 350,
-                  ),
+                SizedBox(
+                  width: 10,
                 ),
-              ),
-              Expanded(
-                flex: 5,
-                child: Padding(
-                  padding: const EdgeInsets.all(5.0),
-                  child: Container(
-                    height: 310,
-                    width: MediaQuery.of(context).size.width,
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 10, horizontal: 10),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8),
-                        color: white,
-                        boxShadow: const [
-                          BoxShadow(blurRadius: 2, blurStyle: BlurStyle.outer)
-                        ]),
-                    child: const TransactionDetails(),
-                  ),
-                ),
-              ),
-            ],
+              ],
+              backgroundColor: white,
+            ),
+            backgroundColor: white,
+            drawer: DrawerWidget(
+             currentitem: state.currentitem!,
+                          onSelectedItems: (item) {
+                            BlocProvider.of<DashboardBloc>(context)
+                                .add(DashboardSidebarSelectEvent(item: item));
+                                Navigator.pop(context);
+                                }
+                              
+            ),
+            body: getScreen(state.currentitem),
           ),
-        ]),
-          ),
-        ),
-      ),
+        );
+        }
+        else{
+          return
+          const SizedBox(height: 7,);
+        }
+      },
     );
+  }
+   Widget getScreen(currentitem) {
+    switch (currentitem) {
+      case SidebarItems.accounts:
+        return const AccountWidget(
+          screen: "Tablet",
+        );
+      case SidebarItems.dashboard:
+        return const MobileDashboardWidget(
+        );
+      case SidebarItems.settings:
+        return BlocProvider(
+          create: (context) => SettingBloc(),
+          child: const SettingWidget(
+            screen: 'Tablet',
+          ),
+        );
+      case SidebarItems.report:
+        return const ReportWidget();
+      case SidebarItems.myspendings:
+        return const Myspendings(
+          screen: "Tablet",
+        );
+      default:
+        return const LoadingWidget();
+    }
   }
 }
