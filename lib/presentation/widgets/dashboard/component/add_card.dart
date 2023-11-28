@@ -12,10 +12,9 @@ class TransactionDetails extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-             const SizedBox(
-              width: 80,
-            ),
+            
             ElevatedButton.icon(
               onPressed: () {},
               icon: const Icon(

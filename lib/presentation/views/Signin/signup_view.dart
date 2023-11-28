@@ -3,6 +3,7 @@ import 'package:dashboard_task/bloc/signup/bloc/signin_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import '../../../core/constants/string.dart';
 import '../../widgets/components/toast_widget.dart';
 import '../../widgets/signup/signup_widget.dart';
 
@@ -17,7 +18,7 @@ class SignupView extends StatelessWidget {
       listener: (context, state) {
        
         if(state is SignupSuccessState){
-        context.router.pushNamed('/');
+        context.router.pushNamed(Strings.loginroute);
        }
        if(state is SignupErrorState){
         FToast toast =FToast();

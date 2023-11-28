@@ -1,16 +1,19 @@
-
+import 'package:auto_route/auto_route.dart';
+import 'package:dashboard_task/bloc/dashboard/bloc/dashboard_bloc.dart';
+import 'package:dashboard_task/presentation/widgets/dashboard/mobile/mobiledashboard_widget.dart';
 import 'package:flutter/material.dart';
-import '../../../../core/constants/path.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../bloc/settings/bloc/setting_bloc.dart';
 import '../../../../core/constants/string.dart';
 import '../../../../core/utils/colors.dart';
-import '../../../../data/constant data/card_data.dart';
 import '../../../../data/models/sidebar_items.dart';
 import '../../components/search_field.dart';
-import '../component/add_card.dart';
-import '../component/chart_widget.dart';
+import '../../loadingwidget/loading_widget.dart';
 import '../component/drawer_widget.dart';
-import '../component/mycard.dart';
-import '../component/transaction_table.dart';
+import '../mainwidget/accounts/accounts.dart';
+import '../mainwidget/expense/spending.dart';
+import '../mainwidget/report/report.dart';
+import '../mainwidget/settings/settings.dart';
 
 class MobileDashboard extends StatefulWidget {
   const MobileDashboard({super.key});
@@ -20,121 +23,99 @@ class MobileDashboard extends StatefulWidget {
 }
 
 class _MobileDashboardState extends State<MobileDashboard> {
-  SidebarItem currentSelecteditem =SidebarItems.accounts;
+  SidebarItem currentSelecteditem = SidebarItems.accounts;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        leading: Builder(
-          builder: (BuildContext context) {
-            return IconButton(
-              icon: const Icon(
-                Icons.menu,
-                color: darkBlack,
-              ),
-              onPressed: () {
-                Scaffold.of(context).openDrawer();
-              },
-              tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
-            );
-          },
-        ),
-        title: const Text(
-          Strings.dashboard,
-          style: TextStyle(color: darkBlack),
-        ),
-        actions: const [
-          Padding(padding: EdgeInsets.all(5), child: SearchFormField()),
-          SizedBox(
-            width: 10,
-          ),
-          Icon(
-            Icons.notifications,
-            color: darkBlack,
-          ),
-          SizedBox(
-            width: 10,
-          ),
-        ],
-        backgroundColor: white,
-      ),
-      backgroundColor: white,
-      drawer: DrawerWidget(
-        // onpressed: () {
-        //   BlocProvider.of<DashboardBloc>(context).add(DashboardLogoutEvent());
-        // }, 
-        currentitem: currentSelecteditem, onSelectedItems: (item) {  },
-      ),
-      body: SafeArea(
-          child: Container(
-        padding: const EdgeInsets.all(0),
-        height: MediaQuery.of(context).size.height,
-        child: SingleChildScrollView(
-          child: Column(children: [
-            Container(
-              padding: const EdgeInsets.all(0.1),
-              width: double.infinity,
-              child: GridView.builder(
-                itemCount: cardData.length,
-                shrinkWrap: true,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    crossAxisSpacing: 14,
-                    childAspectRatio: 1.5),
-                itemBuilder: (context, index) {
-                  return MyBox(
-                    details: cardData[index],
+    return BlocConsumer<DashboardBloc, DashboardState>(
+      listenWhen: (previous, current) => current is DashboardActionState,
+      buildWhen: (previous, current) => current is! DashboardActionState,
+      listener: (context, state) {
+        if (state is DashboardSuccessState) {
+          context.router.pushNamed('/home');
+        }
+      },
+      builder: (context, state) {
+        if(state is DashboardInitialState){
+        return SafeArea(
+          child: Scaffold(
+            appBar: AppBar(
+              leading: Builder(
+                builder: (BuildContext context) {
+                  return IconButton(
+                    icon: const Icon(
+                      Icons.menu,
+                      color: darkBlack,
+                    ),
+                    onPressed: () {
+                      Scaffold.of(context).openDrawer();
+                    },
+                    tooltip:
+                        MaterialLocalizations.of(context).openAppDrawerTooltip,
                   );
                 },
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              //cart Area
-              child: Container(
-                height: 300,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8), color: lightgray),
-                child: const ChartScreen(),
+              title: const Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+               mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Text("Hello Jaswanth",style:TextStyle(color:Color.fromARGB(255, 104, 103, 103),fontSize: 20,fontWeight: FontWeight.bold ) ,),
+                  Text('Welcome back!',style:TextStyle(color:Color.fromARGB(255, 104, 103, 103),fontSize: 15),)
+                ],
               ),
-            ),
-            Container(
-                padding: const EdgeInsets.symmetric(horizontal: 2),
-                child: const TransactionTable()),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Container(
-                height: 250,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
-                  color: white,
+              actions: const [
+                Padding(padding: EdgeInsets.all(9), child: SearchFormField()),
+                SizedBox(
+                  width: 10,
                 ),
-                child: Image.asset(
-                  Paths.cardimage,
-                  height: 300,
-                  width: 350,
+                Icon(
+                  Icons.notifications,
+                  color: darkBlack,
                 ),
-              ),
+                SizedBox(
+                  width: 10,
+                ),
+              ],
+              backgroundColor: white,
             ),
-            Padding(
-              padding: const EdgeInsets.all(5.0),
-              child: Container(
-                height: 310,
-                width: MediaQuery.of(context).size.width,
-                padding:
-                    const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8),
-                    color: white,
-                    boxShadow: const [
-                      BoxShadow(blurRadius: 2, blurStyle: BlurStyle.outer)
-                    ]),
-                child: const TransactionDetails(),
-              ),
+            backgroundColor: white,
+            drawer: DrawerWidget(
+              currentitem: state.currentitem!,
+                      onSelectedItems: (item) {
+                        BlocProvider.of<DashboardBloc>(context)
+                            .add(DashboardSidebarSelectEvent(item: item));
+                      },
             ),
-          ]),
-        ),
-      )),
+            body: getScreen(state.currentitem),
+          ),
+        );
+      }
+      else{
+        return const SizedBox(height: 5,);
+      }
+      },
     );
+  }
+   Widget getScreen(currentitem) {
+    switch (currentitem) {
+      case SidebarItems.accounts:
+        return const AccountWidget(
+          screen: 'mobile',
+        );
+      case SidebarItems.dashboard:
+        return const MobileDashboardWidget();
+      case SidebarItems.settings:
+        return BlocProvider(
+          create: (context) => SettingBloc(),
+          child: const SettingWidget(),
+        );
+      case SidebarItems.report:
+        return const ReportWidget();
+      case SidebarItems.myspendings:
+        return const Myspendings(
+          screen:"mobile",
+        );
+      default:
+        return const LoadingWidget();
+    }
   }
 }

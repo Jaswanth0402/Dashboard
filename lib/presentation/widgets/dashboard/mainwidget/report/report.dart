@@ -34,23 +34,25 @@ class _ReportWidgetState extends State<ReportWidget> {
         } , 
              icon: const Icon(Icons.print), 
              label: const Text(Strings.report)),
-              DataTable(
-                columns: const [
-                  DataColumn(label: Text("Month",style: TextStyle(fontWeight: FontWeight.bold),)),
-                  DataColumn(label: Text("Operating Income",style: TextStyle(fontWeight: FontWeight.bold))),
-                  DataColumn(label: Text("Other Income",style: TextStyle(fontWeight: FontWeight.bold))),
-                  DataColumn(label: Text("Net Income",style: TextStyle(fontWeight: FontWeight.bold))),
-                  DataColumn(label: Text("Subcription",style: TextStyle(fontWeight: FontWeight.bold))),
-                  DataColumn(label: Text("Expense",style: TextStyle(fontWeight: FontWeight.bold))),
-                ],
-                rows: reportList.map((income) => DataRow(cells: [
-                  DataCell(Text(income.month)),
-                  DataCell(Text(income.operatingincome)),
-                  DataCell(Text(income.otherincome)),
-                  DataCell(Text(income.netincome)),
-                  DataCell(Text(income.subcription)),
-                  DataCell(Text(income.expense)),
-                ])).toList(),
+              FittedBox(
+                child: DataTable(
+                  columns: const [
+                    DataColumn(label: Text("Month",style: TextStyle(fontWeight: FontWeight.bold),)),
+                    DataColumn(label: Text("Operating Income",style: TextStyle(fontWeight: FontWeight.bold))),
+                    DataColumn(label: Text("Other Income",style: TextStyle(fontWeight: FontWeight.bold))),
+                    DataColumn(label: Text("Net Income",style: TextStyle(fontWeight: FontWeight.bold))),
+                    DataColumn(label: Text("Subcription",style: TextStyle(fontWeight: FontWeight.bold))),
+                    DataColumn(label: Text("Expense",style: TextStyle(fontWeight: FontWeight.bold))),
+                  ],
+                  rows: reportList.map((income) => DataRow(cells: [
+                    DataCell(Text(income.month)),
+                    DataCell(Text(income.operatingincome)),
+                    DataCell(Text(income.otherincome)),
+                    DataCell(Text(income.netincome)),
+                    DataCell(Text(income.subcription)),
+                    DataCell(Text(income.expense)),
+                  ])).toList(),
+                ),
               ),
             ],
           ),

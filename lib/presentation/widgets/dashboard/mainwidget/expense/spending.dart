@@ -6,46 +6,63 @@ import '../../component/header.dart';
 
 
 class Myspendings extends StatelessWidget {
-  const Myspendings({super.key});
+  final String screen;
+  const Myspendings({super.key, required this.screen});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(10),
-      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        const Header(),
-        const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-          child: Column(
-            children: [
-              SizedBox(
-                height: 5,
-              ),
-              Padding(
-                padding: EdgeInsets.only(left: 8),
-                child: Text("Spendings",
-                    style: TextStyle(
-                        color: darkBlack,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold)),
-              ),
-            ],
+      child: SingleChildScrollView(
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          screen=='mobile'? const SizedBox(height: 2,)
+                :const Header(),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 5,
+                ),
+                Padding(
+                  padding: EdgeInsets.only(left: 8),
+                  child: Text("Spendings",
+                      style: TextStyle(
+                          color: darkBlack,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold)),
+                ),
+              ],
+            ),
           ),
-        ),
-        Container(
-          padding: const EdgeInsets.all(10),
-          width: double.infinity,
-          child: GridView.builder(
-            itemCount: spendingdata.length,
-            shrinkWrap: true,
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 3, crossAxisSpacing: 10, childAspectRatio: 2),
-            itemBuilder: (context, index) {
-              return SpendingCardDetails(detail: spendingdata[index],);
-            },
+          screen =='mobile'?
+          Container(
+            padding: const EdgeInsets.all(10),
+            width: double.infinity,
+            child: GridView.builder(
+              itemCount: spendingdata.length,
+              shrinkWrap: true,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 1, crossAxisSpacing: 10, childAspectRatio: 1.8),
+              itemBuilder: (context, index) {
+                return SpendingCardDetails(detail: spendingdata[index],);
+              },
+            ),
+          ):Container(
+            padding: const EdgeInsets.all(10),
+            width: double.infinity,
+            child: GridView.builder(
+              itemCount: spendingdata.length,
+              shrinkWrap: true,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 3, crossAxisSpacing: 10, childAspectRatio: 1.8),
+              itemBuilder: (context, index) {
+                return SpendingCardDetails(detail: spendingdata[index],);
+              },
+            ),
           ),
-        ),
-      ]),
+        ]),
+      ),
     );
   }
 }

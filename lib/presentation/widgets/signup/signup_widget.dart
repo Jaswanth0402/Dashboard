@@ -49,154 +49,154 @@ class _SignupWidgetState extends State<SignupWidget> {
               image: AssetImage(Paths.backgroundimage), fit: BoxFit.fill),
         ),
         child: Column(
+
           children: [
             Expanded(
               child: SingleChildScrollView(
                 child: Column(
+
                   children: [
+                    const SizedBox(height: 60,),
                     Container(
                       padding: const EdgeInsets.all(10),
-                      width: 600,
+                      width: 350,
+                     
                       child: Form(
                           key: _key,
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 80, vertical: 90),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                const Text(
-                                  Strings.signup,
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                      color: lightBlueAccent,
-                                      fontSize: 30,
-                                      fontStyle: FontStyle.normal),
-                                ),
-                                const SizedBox(
-                                  height: 20,
-                                ),
-                                InputWidget(
-                                  textInputAction: TextInputAction.next,
-                                  editTextType: Strings.name,
-                                  titles: Strings.name,
-                                  prefixIcons: const Icon(
-                                    Icons.info_outline,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              const Text(
+                                Strings.signup,
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
                                     color: lightBlueAccent,
-                                    size: 16,
-                                  ),
-                                  autoValidateMode:
-                                      AutovalidateMode.onUserInteraction,
-                                  autofocus: true,
-                                  controller: name,
-                                  hintText: Strings.name,
+                                    fontSize: 30,
+                                    fontStyle: FontStyle.normal),
+                              ),
+                              const SizedBox(
+                                height: 20,
+                              ),
+                              InputWidget(
+                                textInputAction: TextInputAction.next,
+                                editTextType: Strings.name,
+                                titles: Strings.name,
+                                prefixIcons: const Icon(
+                                  Icons.info_outline,
+                                  color: lightBlueAccent,
+                                  size: 16,
                                 ),
-                                const SizedBox(
-                                  height: 20,
+                                autoValidateMode:
+                                    AutovalidateMode.onUserInteraction,
+                                autofocus: true,
+                                controller: name,
+                                hintText: Strings.name,
+                              ),
+                              const SizedBox(
+                                height: 20,
+                              ),
+                              InputWidget(
+                                textInputAction: TextInputAction.next,
+                                editTextType: Strings.email,
+                                titles: Strings.email,
+                                prefixIcons: const Icon(
+                                  Icons.email_outlined,
+                                  color: lightBlueAccent,
+                                  size: 16,
                                 ),
-                                InputWidget(
-                                  textInputAction: TextInputAction.next,
-                                  editTextType: Strings.email,
-                                  titles: Strings.email,
-                                  prefixIcons: const Icon(
-                                    Icons.email_outlined,
-                                    color: lightBlueAccent,
-                                    size: 16,
-                                  ),
-                                  autoValidateMode:
-                                      AutovalidateMode.onUserInteraction,
-                                  autofocus: false,
-                                  controller: email,
-                                  hintText: Strings.email,
-                                ),
-                                const SizedBox(
-                                  height: 20,
-                                ),
-                                Row(
-                                  children: [
-                                    ElevatedButton.icon(
-                                        onPressed: () {
-                                          BlocProvider.of<SignupBloc>(context)
-                                              .add(InsertProfileEvent(
-                                                  source: ImageSource.gallery));
-                                        },
-                                        icon: const Icon(
-                                            Icons.upload_file_outlined),
-                                        label: const Text("choose file")),        
-                                 
-                                  ],
-                                ),
-                                InputWidget(
-                                  textInputAction: TextInputAction.next,
-                                  editTextType: Strings.mobile,
-                                  titles: Strings.mobile,
-                                  prefixIcons: const Icon(
-                                    Icons.mobile_friendly_outlined,
-                                    color: lightBlueAccent,
-                                    size: 16,
-                                  ),
-                                  autoValidateMode:
-                                      AutovalidateMode.onUserInteraction,
-                                  autofocus: true,
-                                  controller: mobile,
-                                  hintText: Strings.mobile,
-                                ),
-                                const SizedBox(
-                                  height: 20,
-                                ),
-                                InputWidget(
-                                  textInputAction: TextInputAction.done,
-                                  editTextType: Strings.password,
-                                  titles: Strings.password,
-                                  prefixIcons: const Icon(
-                                    Icons.lock_clock_outlined,
-                                    color: lightBlueAccent,
-                                    size: 16,
-                                  ),
-                                  autoValidateMode:
-                                      AutovalidateMode.onUserInteraction,
-                                  controller: password,
-                                  hintText: Strings.password,
-                                ),
-                                const SizedBox(
-                                  height: 20,
-                                ),
-                                ButtonWidget(
-                                  onpressed: authenticate,
-                                  value: Strings.signup,
-                                ),
-                                const SizedBox(
-                                  height: 20,
-                                ),
-                                Row(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    const Text(
-                                      Strings.haveaccount,
-                                      textAlign: TextAlign.end,
-                                      style: TextStyle(color: white),
-                                    ),
-                                    const SizedBox(
-                                      width: 10,
-                                    ),
-                                    GestureDetector(
-                                      onTap: () {
+                                autoValidateMode:
+                                    AutovalidateMode.onUserInteraction,
+                                autofocus: false,
+                                controller: email,
+                                hintText: Strings.email,
+                              ),
+                              const SizedBox(
+                                height: 20,
+                              ),
+                              Row(
+                                children: [
+                                  ElevatedButton.icon(
+                                      onPressed: () {
                                         BlocProvider.of<SignupBloc>(context)
-                                            .add(SignupLoginNavigateEvent());
+                                            .add(InsertProfileEvent(
+                                                source: ImageSource.gallery));
                                       },
-                                      child: const Text(
-                                        Strings.login,
-                                        textAlign: TextAlign.end,
-                                        style:
-                                            TextStyle(color: lightBlueAccent),
-                                      ),
-                                    )
-                                  ],
+                                      icon: const Icon(
+                                          Icons.upload_file_outlined),
+                                      label: const Text("choose file")),        
+                               
+                                ],
+                              ),
+                              InputWidget(
+                                textInputAction: TextInputAction.next,
+                                editTextType: Strings.mobile,
+                                titles: Strings.mobile,
+                                prefixIcons: const Icon(
+                                  Icons.mobile_friendly_outlined,
+                                  color: lightBlueAccent,
+                                  size: 16,
                                 ),
-                              ],
-                            ),
+                                autoValidateMode:
+                                    AutovalidateMode.onUserInteraction,
+                                autofocus: true,
+                                controller: mobile,
+                                hintText: Strings.mobile,
+                              ),
+                              const SizedBox(
+                                height: 20,
+                              ),
+                              InputWidget(
+                                textInputAction: TextInputAction.done,
+                                editTextType: Strings.password,
+                                titles: Strings.password,
+                                prefixIcons: const Icon(
+                                  Icons.lock_clock_outlined,
+                                  color: lightBlueAccent,
+                                  size: 16,
+                                ),
+                                autoValidateMode:
+                                    AutovalidateMode.onUserInteraction,
+                                controller: password,
+                                hintText: Strings.password,
+                              ),
+                              const SizedBox(
+                                height: 20,
+                              ),
+                              ButtonWidget(
+                                onpressed: authenticate,
+                                value: Strings.signup,
+                              ),
+                              const SizedBox(
+                                height: 20,
+                              ),
+                              Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  const Text(
+                                    Strings.haveaccount,
+                                    textAlign: TextAlign.end,
+                                    style: TextStyle(color: white),
+                                  ),
+                                  const SizedBox(
+                                    width: 10,
+                                  ),
+                                  GestureDetector(
+                                    onTap: () {
+                                      BlocProvider.of<SignupBloc>(context)
+                                          .add(SignupLoginNavigateEvent());
+                                    },
+                                    child: const Text(
+                                      Strings.login,
+                                      textAlign: TextAlign.end,
+                                      style:
+                                          TextStyle(color: lightBlueAccent),
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ],
                           )),
                     ),
                   ],

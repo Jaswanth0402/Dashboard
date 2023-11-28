@@ -16,7 +16,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return  BlocProvider(
       create: (context) => HomeBloc(),
-      child: HomeView(),
+      child: const HomeView(),
     );
   }
 }

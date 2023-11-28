@@ -88,19 +88,19 @@ class InputWidget extends StatelessWidget {
                   isDense: true,
                 
                   border: const OutlineInputBorder(
-                    borderSide: BorderSide(width: 0.5, color:lightBlueAccent),
+                    borderSide: BorderSide(width: 1, color:lightBlueAccent),
                   ),
                   enabledBorder: const OutlineInputBorder(
-                    borderSide: BorderSide(width: 0.5, color:lightBlueAccent),
+                    borderSide: BorderSide(width: 1, color:lightBlueAccent),
                   ),
                   focusedBorder: const OutlineInputBorder(
-                    borderSide: BorderSide(width: 1,color: lightBlueAccent),
+                    borderSide: BorderSide(width: 1.5,color: lightBlueAccent),
                   ),
                   errorBorder: const OutlineInputBorder(
-                    borderSide: BorderSide(width: 1, color:primaryColor),
+                    borderSide: BorderSide(width: 1.5, color:primaryColor),
                   ),
                   focusedErrorBorder: const OutlineInputBorder(
-                    borderSide: BorderSide(width: 1, color: primaryColor),
+                    borderSide: BorderSide(width: 1.5, color: primaryColor),
                   ),
                   errorStyle: const TextStyle(
                     color: primaryColor,

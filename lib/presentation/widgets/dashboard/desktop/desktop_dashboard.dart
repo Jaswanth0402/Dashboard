@@ -29,38 +29,33 @@ class _DesktopScaffoldState extends State<DesktopDashboard> {
       buildWhen: (previous, current) => current is! DashboardActionState,
       listener: (context, state) {
         if (state is DashboardSuccessState) {
-          context.router.pushNamed('/home');
+          context.router.pushNamed('/');
         }
       },
       builder: (context, state) {
         if (state is DashboardInitialState) {
-          return WillPopScope(
-                onWillPop: ()async{
-                  return false;
-                },
-            child: Scaffold(
-              backgroundColor: white,
-              body: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  // open drawer
-                  Expanded(
-                      flex: 1,
-                      child: DrawerWidget(
-                        currentitem: state.currentitem!,
-                        onSelectedItems: (item) {
-                          BlocProvider.of<DashboardBloc>(context)
-                              .add(DashboardSidebarSelectEvent(item: item));
-                        },
-                      )),
-          
-                  // first half of page
-                  Expanded(
-                    flex: 6,
-                    child: getScreen(state.currentitem),
-                  ),
-                ],
-              ),
+          return Scaffold(
+            backgroundColor: white,
+            body: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // open drawer
+                Expanded(
+                    flex: 1,
+                    child: DrawerWidget(
+                      currentitem: state.currentitem!,
+                      onSelectedItems: (item) {
+                        BlocProvider.of<DashboardBloc>(context)
+                            .add(DashboardSidebarSelectEvent(item: item));
+                      },
+                    )),
+
+                // first half of page
+                Expanded(
+                  flex: 6,
+                  child: getScreen(state.currentitem),
+                ),
+              ],
             ),
           );
         } else {
@@ -75,7 +70,9 @@ class _DesktopScaffoldState extends State<DesktopDashboard> {
   Widget getScreen(currentitem) {
     switch (currentitem) {
       case SidebarItems.accounts:
-        return const AccountWidget();
+        return const AccountWidget(
+          screen: "desktop",
+        );
       case SidebarItems.dashboard:
         return const DashboardSide(
           screen: "desktop",
@@ -88,7 +85,9 @@ class _DesktopScaffoldState extends State<DesktopDashboard> {
       case SidebarItems.report:
         return const ReportWidget();
       case SidebarItems.myspendings:
-        return const Myspendings();
+        return const Myspendings(
+          screen: "desktop",
+        );
       default:
         return const LoadingWidget();
     }

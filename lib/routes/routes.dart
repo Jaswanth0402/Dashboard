@@ -12,27 +12,26 @@ class AppRouter extends $AppRouter{
       transitionsBuilder: TransitionsBuilders.slideLeft,
       page:  HomePage.page,
       initial: true,
-      path: '/home',
       keepHistory: false
       ),
     CustomRoute(
       transitionsBuilder: TransitionsBuilders.slideLeft,
       path: Strings.loginroute,
       page:  LoginPage.page,
-       keepHistory: false,
+      keepHistory: false
       ),
     CustomRoute(
       transitionsBuilder: TransitionsBuilders.slideLeft,
       path: Strings.signuproute,
-      page: SignupPage.page,
-      keepHistory: false,
+      page: SignupPage.page, 
+      keepHistory: false
       ),
     CustomRoute(
       transitionsBuilder: TransitionsBuilders.slideLeft,
       path: Strings.dashboardroute,
       page: DashBoardPage.page,
-      guards: [AuthGuard()],
-      keepHistory: false
+      guards: [AuthGuard()], 
+      keepHistory: false    
       ),
 
      

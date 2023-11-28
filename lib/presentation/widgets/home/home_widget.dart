@@ -19,11 +19,11 @@ class _HomeWidgetState extends State<HomeWidget> {
     return  Scaffold(
       
       body: Container(
-        padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 80),
+        padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 40),
         width: MediaQuery.of(context).size.width,
         decoration: const BoxDecoration(
           image: DecorationImage(
-              image: AssetImage("image/home3.webp"), fit: BoxFit.fill),
+              image: AssetImage("image/home2.webp"), fit: BoxFit.cover),
         ),
         child:  Column(
           
@@ -36,27 +36,25 @@ class _HomeWidgetState extends State<HomeWidget> {
                     onPressed: (){
                       BlocProvider.of<HomeBloc>(context).add(LoginNavigateEvent());
                     },
-                    style: ElevatedButton.styleFrom(backgroundColor: Colors.transparent,side: BorderSide(color: blue)), icon: const Icon(Icons.login_outlined), label: const Text(Strings.login))
+                    style: ElevatedButton.styleFrom(backgroundColor: Colors.transparent,side: const BorderSide(color: blue)), icon: const Icon(Icons.login_outlined), label: const Text(Strings.login))
                
              ],
             ),
-            SizedBox(height: 140,),
-            const Row(
+            const SizedBox(height: 180,),
+             const Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Column(
-                  children: [
-                    SizedBox(
-                      width: 350,
-                      child: Text("Financial Assitance With True Purpose",style: TextStyle(color: white,fontSize: 45,fontWeight: FontWeight.bold),)),
-                      SizedBox(
-                        height: 6,
-                      ),
-                    SizedBox(
-                      
-                      width: 350,
-                      child: Text("We know how large objects will act but things on a small scale",style: TextStyle(color: darkGrey,fontSize: 20),))
-                  ],
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text("Financial Assitance \nWith True Purpose",softWrap: true,style: TextStyle(color: white,fontSize: 45,fontWeight: FontWeight.bold),),
+                        SizedBox(
+                          height: 6,
+                        ),
+                      Text("We know how large objects will act but \nthings on a small scale",style: TextStyle(color: darkGrey,fontSize: 20),)
+                    ],
+                  ),
                 ),
               ],
             ),
