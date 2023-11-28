@@ -2,13 +2,12 @@ import 'package:flutter/material.dart';
 
 import '../../../core/utils/colors.dart';
 
-Widget showToast(message){
+Widget showToast(message,String indicator){
   return Container(
         padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
         decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(25.0),
-        color: secondPrimaryColor,
-        ),
+        color: indicator=='Error'?secondPrimaryColor:green,),
         child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [

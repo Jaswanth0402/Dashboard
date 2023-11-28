@@ -29,7 +29,7 @@ class LoginView extends StatelessWidget {
          FToast toast =FToast();
          toast.init(context);
          toast.showToast(
-          child: showToast(state.message),
+          child: showToast(state.message,"Error"),
          toastDuration: const Duration(seconds: 2),
          positionedToastBuilder: (context, child) {
           return Positioned(

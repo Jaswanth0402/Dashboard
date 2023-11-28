@@ -18,13 +18,25 @@ class SignupView extends StatelessWidget {
       listener: (context, state) {
        
         if(state is SignupSuccessState){
+           FToast toast =FToast();
+         toast.init(context);
+         toast.showToast(
+          child: showToast(state.message,'Success'),
+         toastDuration: const Duration(seconds: 2),
+         positionedToastBuilder: (context, child) {
+          return Positioned(
+            top: 16.0,
+            left: MediaQuery.of(context).size.width*0.42,
+            child: child,
+          );
+        });
         context.router.pushNamed(Strings.loginroute);
        }
        if(state is SignupErrorState){
         FToast toast =FToast();
          toast.init(context);
          toast.showToast(
-          child: showToast(state.message),
+          child: showToast(state.message,"Error"),
          toastDuration: const Duration(seconds: 2),
          positionedToastBuilder: (context, child) {
           return Positioned(

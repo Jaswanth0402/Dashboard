@@ -26,7 +26,7 @@ final ImagePicker _picker = ImagePicker();
        var result =await FirebaseMethods.addUser(name: event.name, image: event.image, email: event.email, contact: event.contact, password: event.password);
        var response=await FirebaseAuth.instance.createUserWithEmailAndPassword(email: event.email, password: event.password);
        if(response.user?.email!=null){
-       emit(SignupSuccessState());
+       emit(SignupSuccessState(message:result.message! ));
        }
     } catch (e) {
   
@@ -52,6 +52,6 @@ FutureOr<void> insertProfile(InsertProfileEvent event, Emitter<SignupState> emit
 
 
   FutureOr<void> signupLoginNavigateEvent(SignupLoginNavigateEvent event, Emitter<SignupState> emit) {
-    emit(SignupSuccessState());
+    emit(SignupSuccessState(message: ''));
   }
 }

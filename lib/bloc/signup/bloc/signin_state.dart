@@ -12,6 +12,9 @@ class SignupOnLoadState extends SignupState{
    SignupOnLoadState({required this.image});
 }
 class SignupSuccessState extends SignupActionState{
+  final String message;
+
+  SignupSuccessState({required this.message});
 }
 
 class SignupErrorState extends SignupActionState{

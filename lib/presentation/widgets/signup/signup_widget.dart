@@ -126,6 +126,9 @@ class _SignupWidgetState extends State<SignupWidget> {
                                
                                 ],
                               ),
+                              const SizedBox(
+                                height: 20,
+                              ),
                               InputWidget(
                                 textInputAction: TextInputAction.next,
                                 editTextType: Strings.mobile,
