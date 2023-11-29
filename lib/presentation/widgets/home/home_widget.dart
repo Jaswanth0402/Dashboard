@@ -1,5 +1,6 @@
 
 import 'package:dashboard_task/bloc/home/bloc/home_bloc.dart';
+import 'package:dashboard_task/core/constants/path.dart';
 import 'package:dashboard_task/core/utils/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -23,7 +24,7 @@ class _HomeWidgetState extends State<HomeWidget> {
         width: MediaQuery.of(context).size.width,
         decoration: const BoxDecoration(
           image: DecorationImage(
-              image: AssetImage("image/home2.webp"), fit: BoxFit.cover),
+              image: AssetImage(Paths.homeimage), fit: BoxFit.cover),
         ),
         child:  Column(
           
