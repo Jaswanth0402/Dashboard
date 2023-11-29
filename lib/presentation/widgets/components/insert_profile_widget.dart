@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:dashboard_task/core/constants/path.dart';
 import 'package:flutter/material.dart';
 
 
@@ -23,7 +24,7 @@ class ImageProfile extends StatelessWidget {
                       width: 95.0,
                       height: 95.0,
                     )
-                  : Image.asset("image/profile.png",
+                  : Image.asset(Paths.profileimage,
                       fit: BoxFit.cover, width: 95.0, height: 95.0)),
          
         ],
