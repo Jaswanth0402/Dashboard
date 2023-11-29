@@ -1,13 +1,13 @@
 # This is a generated file; do not edit or check into version control.
-cloud_firestore=/Users/novastrid/.pub-cache/hosted/pub.dev/cloud_firestore-4.12.2/
-cloud_firestore_web=/Users/novastrid/.pub-cache/hosted/pub.dev/cloud_firestore_web-3.8.3/
+cloud_firestore=/Users/novastrid/.pub-cache/hosted/pub.dev/cloud_firestore-4.13.3/
+cloud_firestore_web=/Users/novastrid/.pub-cache/hosted/pub.dev/cloud_firestore_web-3.8.7/
 file_selector_linux=/Users/novastrid/.pub-cache/hosted/pub.dev/file_selector_linux-0.9.2+1/
 file_selector_macos=/Users/novastrid/.pub-cache/hosted/pub.dev/file_selector_macos-0.9.3+3/
 file_selector_windows=/Users/novastrid/.pub-cache/hosted/pub.dev/file_selector_windows-0.9.3+1/
-firebase_auth=/Users/novastrid/.pub-cache/hosted/pub.dev/firebase_auth-4.12.1/
-firebase_auth_web=/Users/novastrid/.pub-cache/hosted/pub.dev/firebase_auth_web-5.8.6/
-firebase_core=/Users/novastrid/.pub-cache/hosted/pub.dev/firebase_core-2.21.0/
-firebase_core_web=/Users/novastrid/.pub-cache/hosted/pub.dev/firebase_core_web-2.8.1/
+firebase_auth=/Users/novastrid/.pub-cache/hosted/pub.dev/firebase_auth-4.15.0/
+firebase_auth_web=/Users/novastrid/.pub-cache/hosted/pub.dev/firebase_auth_web-5.8.9/
+firebase_core=/Users/novastrid/.pub-cache/hosted/pub.dev/firebase_core-2.24.0/
+firebase_core_web=/Users/novastrid/.pub-cache/hosted/pub.dev/firebase_core_web-2.9.0/
 flutter_plugin_android_lifecycle=/Users/novastrid/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.17/
 fluttertoast=/Users/novastrid/.pub-cache/hosted/pub.dev/fluttertoast-8.2.4/
 image_picker=/Users/novastrid/.pub-cache/hosted/pub.dev/image_picker-1.0.4/
@@ -23,5 +23,5 @@ shared_preferences=/Users/novastrid/.pub-cache/hosted/pub.dev/shared_preferences
 shared_preferences_android=/Users/novastrid/.pub-cache/hosted/pub.dev/shared_preferences_android-2.2.1/
 shared_preferences_foundation=/Users/novastrid/.pub-cache/hosted/pub.dev/shared_preferences_foundation-2.3.4/
 shared_preferences_linux=/Users/novastrid/.pub-cache/hosted/pub.dev/shared_preferences_linux-2.3.2/
-shared_preferences_web=/Users/novastrid/.pub-cache/hosted/pub.dev/shared_preferences_web-2.2.1/
+shared_preferences_web=/Users/novastrid/.pub-cache/hosted/pub.dev/shared_preferences_web-2.2.2/
 shared_preferences_windows=/Users/novastrid/.pub-cache/hosted/pub.dev/shared_preferences_windows-2.3.2/

@@ -56,7 +56,7 @@ class _AccountWidgetState extends State<AccountWidget> {
                 itemCount: accountData.length,
                 shrinkWrap: true,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 1, crossAxisSpacing: 10, childAspectRatio: 2.8),
+                    crossAxisCount: 1, crossAxisSpacing: 10, childAspectRatio: 2.6),
                 itemBuilder: (context,index) {
                   return  CardDetails(
                    
@@ -74,7 +74,7 @@ class _AccountWidgetState extends State<AccountWidget> {
                 itemCount: accountData.length,
                 shrinkWrap: true,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2, crossAxisSpacing: 10, childAspectRatio: 2.8),
+                    crossAxisCount: 2, crossAxisSpacing: 10, childAspectRatio: 2.6),
                 itemBuilder: (context,index) {
                   return  CardDetails(
                    
@@ -87,14 +87,14 @@ class _AccountWidgetState extends State<AccountWidget> {
       default:
         return 
            Container(
-              padding: const EdgeInsets.all(10),
+              padding: const EdgeInsets.all(5),
               width: double.infinity,
               decoration: const BoxDecoration(color: white),
               child: GridView.builder(
                 itemCount: accountData.length,
                 shrinkWrap: true,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 4, crossAxisSpacing: 10, childAspectRatio: 2),
+                    crossAxisCount: 4, crossAxisSpacing: 10, childAspectRatio: 1.9),
                 itemBuilder: (context,index) {
                   return  CardDetails(
                     

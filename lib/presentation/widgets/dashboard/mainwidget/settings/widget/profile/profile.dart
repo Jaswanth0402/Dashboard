@@ -18,7 +18,6 @@ class _ProfileWidgetState extends State<ProfileWidget> {
   Future<String> instance() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     var email = preferences.get('email');
-
     return email.toString();
   }
 
@@ -63,6 +62,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                               ),
                               Text(
                                 e.data().toString().contains('username')
+
                                     ? e['username']
                                     : '',
                                 style: const TextStyle(
@@ -143,10 +143,9 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                         width: 10,
                                       ),
                                       Text(
-                                        e
-                                                .data()
-                                                .toString()
-                                                .contains('contact_no')
+                                        e.data()
+                                         .toString()
+                                         .contains('contact_no')
                                             ? e['contact_no']
                                             : '',
                                         style: const TextStyle(
@@ -176,72 +175,3 @@ class _ProfileWidgetState extends State<ProfileWidget> {
   }
 }
 
-// SizedBox(
-//           height: MediaQuery.of(context).size.height*0.5,
-        
-//           child:  const Column(
-//             children: [
-//               Expanded(child: Column(
-//                 mainAxisAlignment: MainAxisAlignment.center,
-//                 children: [
-//                      ImageProfile(),
-//                      SizedBox(
-//                       height: 20,
-//                     ),
-//                      Text(
-//                       Strings.profilename,
-//                       style: TextStyle(
-//                           color: white, fontSize: 15, fontWeight: FontWeight.bold),
-//                     )
-//                 ],
-//               )),
-//                Expanded(child:Column(
-//                 crossAxisAlignment: CrossAxisAlignment.start,
-//                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//                 children: [
-//                   Row(
-//                 crossAxisAlignment: CrossAxisAlignment.center,
-//                 mainAxisAlignment: MainAxisAlignment.center,
-//                     children: [
-//                       Text("Email",
-//                       style: TextStyle(
-//                           color: white, fontSize: 15, fontWeight: FontWeight.bold),),
-//                       SizedBox(width: 10,),
-//                       Text("jgjaswanthjk6@gmail.com",
-//                       style: TextStyle(
-//                           color: white, fontSize: 15, fontWeight: FontWeight.bold),)
-//                     ],
-//                   ),
-                  
-//                   Row(
-//                  crossAxisAlignment: CrossAxisAlignment.center,
-//                  mainAxisAlignment: MainAxisAlignment.center,
-//                     children: [
-//                       Text("Password",
-//                       style: TextStyle(
-//                           color: white, fontSize: 15, fontWeight: FontWeight.bold),),
-//                           SizedBox(width: 10,),
-//                       Text("Logan0402@",
-//                       style: TextStyle(
-//                           color: white, fontSize: 15, fontWeight: FontWeight.bold),)
-//                     ],
-//                   ),
-//                   Row(
-//                   crossAxisAlignment: CrossAxisAlignment.center,
-//                   mainAxisAlignment: MainAxisAlignment.center,
-//                     children: [
-//                       Text("Contact",
-//                       style: TextStyle(
-//                           color: white, fontSize: 15, fontWeight: FontWeight.bold),),
-//                           SizedBox(width: 10,),
-//                       Text("6374884174",
-//                       style: TextStyle(
-//                           color: white, fontSize: 15, fontWeight: FontWeight.bold),)
-//                     ],
-//                   )
-        
-//                 ],
-//               ) )
-//             ],
-//           ),
-//         );

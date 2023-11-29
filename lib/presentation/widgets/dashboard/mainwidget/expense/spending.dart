@@ -45,13 +45,13 @@ class Myspendings extends StatelessWidget {
       case 'mobile':
       return
          Container(
-            padding: const EdgeInsets.all(10),
+            padding: const EdgeInsets.all(5),
             width: double.infinity,
             child: GridView.builder(
               itemCount: spendingdata.length,
               shrinkWrap: true,
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 1, crossAxisSpacing: 10, childAspectRatio: 1.8),
+                  crossAxisCount: 1, crossAxisSpacing: 10, childAspectRatio: 1.7),
               itemBuilder: (context, index) {
                 return SpendingCardDetails(detail: spendingdata[index],);
               },
@@ -66,7 +66,7 @@ class Myspendings extends StatelessWidget {
               itemCount: spendingdata.length,
               shrinkWrap: true,
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2, crossAxisSpacing: 10, childAspectRatio: 1.8),
+                  crossAxisCount: 2, crossAxisSpacing: 10, childAspectRatio: 1.7),
               itemBuilder: (context, index) {
                 return SpendingCardDetails(detail: spendingdata[index],);
               },
@@ -76,13 +76,13 @@ class Myspendings extends StatelessWidget {
       default:
         return 
         Container(
-            padding: const EdgeInsets.all(10),
+            padding: const EdgeInsets.all(5),
             width: double.infinity,
             child: GridView.builder(
               itemCount: spendingdata.length,
               shrinkWrap: true,
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 3, crossAxisSpacing: 10, childAspectRatio: 1.8),
+                  crossAxisCount: 3, crossAxisSpacing: 10, childAspectRatio: 1.7),
               itemBuilder: (context, index) {
                 return SpendingCardDetails(detail: spendingdata[index],);
               },
