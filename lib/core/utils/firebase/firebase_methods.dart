@@ -3,6 +3,7 @@
 // ignore_for_file: avoid_print
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dashboard_task/data/models/user_model.dart';
 
 import '../../../data/models/response_model.dart';
 
@@ -45,18 +46,26 @@ static Future<Response> addUser ({
      });
     return response;
   }
-  static getUser({
+  static Stream<QuerySnapshot> getUser({
     final String? email
   }){
-    print(email);
-    _Collection.where("email", isEqualTo: email).get().then(
-  (querySnapshot) {
-    print("Successfully completed");
-    for (var docSnapshot in querySnapshot.docs) {
-      print('${docSnapshot.id} => ${docSnapshot.data()}');
-    }
-  },
-  onError: (e) => print("Error completing: $e"),
-);
+   
+    print('email:$email');
+    return
+    _Collection.where("email", isEqualTo: email).snapshots();
+//     .get().then(
+//   (querySnapshot) {
+//     print("Successfully completed");
+//     // for (var docSnapshot in querySnapshot.docs) {
+//     //   print('${docSnapshot.id} => ${docSnapshot.data()}');
+//     // }
+//      user = querySnapshot.docs[0].data();
+  
+   
+//   },
+  
+//   onError: (e) => print("Error completing: $e"),
+// );
+
   }
 }
