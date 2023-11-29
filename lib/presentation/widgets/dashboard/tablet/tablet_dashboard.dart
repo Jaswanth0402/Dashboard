@@ -23,85 +23,84 @@ class TabletDashboard extends StatefulWidget {
 }
 
 class _TabletDashboardState extends State<TabletDashboard> {
-  SidebarItem currentSelecteditem =SidebarItems.accounts;
+  SidebarItem currentSelecteditem = SidebarItems.accounts;
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<DashboardBloc, DashboardState>(
       listenWhen: (previous, current) => current is DashboardActionState,
       buildWhen: (previous, current) => current is! DashboardActionState,
       listener: (context, state) {
-       if (state is DashboardSuccessState) {
+        if (state is DashboardSuccessState) {
           context.router.pushNamed('/');
         }
       },
       builder: (context, state) {
-        if(state is DashboardInitialState){
-        return SafeArea(
-          child: Scaffold(
-            appBar: AppBar(
-              leading: Builder(
-                builder: (BuildContext context) {
-                  return IconButton(
-                    icon: const Icon(
-                      Icons.menu,
-                      color: darkBlack,
-                    ),
-                    onPressed: () {
-                      Scaffold.of(context).openDrawer();
-                    },
-                    tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
-                  );
-                },
+        if (state is DashboardInitialState) {
+          return SafeArea(
+            child: Scaffold(
+              appBar: AppBar(
+                leading: Builder(
+                  builder: (BuildContext context) {
+                    return IconButton(
+                      icon: const Icon(
+                        Icons.menu,
+                        color: darkBlack,
+                      ),
+                      onPressed: () {
+                        Scaffold.of(context).openDrawer();
+                      },
+                      tooltip: MaterialLocalizations.of(context)
+                          .openAppDrawerTooltip,
+                    );
+                  },
+                ),
+                title: const Text(
+                  Strings.dashboard,
+                  style: TextStyle(color: darkBlack),
+                ),
+                actions: const [
+                  Padding(padding: EdgeInsets.all(5), child: SearchFormField()),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Icon(
+                    Icons.notifications,
+                    color: darkBlack,
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                ],
+                backgroundColor: white,
               ),
-              title: const Text(
-                Strings.dashboard,
-                style: TextStyle(color: darkBlack),
-              ),
-              actions: const [
-                Padding(padding: EdgeInsets.all(5), child: SearchFormField()),
-                SizedBox(
-                  width: 10,
-                ),
-                Icon(
-                  Icons.notifications,
-                  color: darkBlack,
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-              ],
               backgroundColor: white,
+              drawer: DrawerWidget(
+                  currentitem: state.currentitem!,
+                  onSelectedItems: (item) {
+                    BlocProvider.of<DashboardBloc>(context)
+                        .add(DashboardSidebarSelectEvent(item: item));
+                    Navigator.pop(context);
+                  }),
+              body: getScreen(state.currentitem),
             ),
-            backgroundColor: white,
-            drawer: DrawerWidget(
-             currentitem: state.currentitem!,
-                          onSelectedItems: (item) {
-                            BlocProvider.of<DashboardBloc>(context)
-                                .add(DashboardSidebarSelectEvent(item: item));
-                                Navigator.pop(context);
-                                }
-                              
-            ),
-            body: getScreen(state.currentitem),
-          ),
-        );
-        }
-        else{
-          return
-          const SizedBox(height: 7,);
+          );
+        } else {
+          return const SizedBox(
+            height: 7,
+          );
         }
       },
     );
   }
-   Widget getScreen(currentitem) {
+
+  Widget getScreen(currentitem) {
     switch (currentitem) {
       case SidebarItems.accounts:
         return const AccountWidget(
           screen: "Tablet",
         );
       case SidebarItems.dashboard:
-        return const MobileDashboardWidget(
-        );
+        return const MobileDashboardWidget();
       case SidebarItems.settings:
         return BlocProvider(
           create: (context) => SettingBloc(),
@@ -110,7 +109,10 @@ class _TabletDashboardState extends State<TabletDashboard> {
           ),
         );
       case SidebarItems.report:
-        return const ReportWidget();
+        return  BlocProvider(
+          create: (context) => DashboardBloc(),
+          child: const ReportWidget(),
+        );
       case SidebarItems.myspendings:
         return const Myspendings(
           screen: "Tablet",

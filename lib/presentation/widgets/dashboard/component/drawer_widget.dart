@@ -57,7 +57,7 @@ class DrawerWidget extends StatelessWidget {
                   },
                 ),
                 const SizedBox(
-                  height: 20,
+                  height: 15,
                 ),
                 const Text(
                   Strings.profilename,

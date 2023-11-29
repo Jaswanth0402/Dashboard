@@ -12,9 +12,9 @@ class SignupOnLoadState extends SignupState{
    SignupOnLoadState({required this.image});
 }
 class SignupSuccessState extends SignupActionState{
-  final String message;
+  final String? message;
 
-  SignupSuccessState({required this.message});
+  SignupSuccessState({ this.message});
 }
 
 class SignupErrorState extends SignupActionState{
@@ -27,5 +27,7 @@ final class InsertProfileSuccessState extends SignupState{
  final String image;
 
   InsertProfileSuccessState({required this.image});
+}
+class SignupSuccessNavigateState extends SignupActionState{
 }
 

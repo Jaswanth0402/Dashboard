@@ -89,6 +89,7 @@ class _AccountWidgetState extends State<AccountWidget> {
            Container(
               padding: const EdgeInsets.all(10),
               width: double.infinity,
+              decoration: const BoxDecoration(color: white),
               child: GridView.builder(
                 itemCount: accountData.length,
                 shrinkWrap: true,

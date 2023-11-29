@@ -15,3 +15,5 @@ final class DashboardSidebarSelectEvent extends DashboardEvent{
 
   DashboardSidebarSelectEvent({required this.item});
 }
+
+final class PdfReportDownloadEvent extends DashboardEvent{}

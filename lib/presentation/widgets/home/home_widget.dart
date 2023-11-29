@@ -36,7 +36,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                     onPressed: (){
                       BlocProvider.of<HomeBloc>(context).add(LoginNavigateEvent());
                     },
-                    style: ElevatedButton.styleFrom(backgroundColor: Colors.transparent,side: const BorderSide(color: blue)), icon: const Icon(Icons.login_outlined), label: const Text(Strings.login))
+                    style: ElevatedButton.styleFrom(backgroundColor: Colors.transparent,side: const BorderSide(color: blue)), icon: const Icon(Icons.login_outlined,color: white,), label: const Text(Strings.login,style: TextStyle(color: white),))
                
              ],
             ),

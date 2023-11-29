@@ -5,6 +5,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../../../core/utils/pdf_service.dart';
+import '../../../data/models/report_model.dart';
 import '../../../data/models/sidebar_items.dart';
 import '../../../presentation/widgets/dashboard/component/drawer_widget.dart';
 
@@ -16,6 +18,7 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
     on<DashboardLogoutEvent>(dashboardLogoutEvent);
     on<DashboardInsertProfileEvent>(insertProfile);
     on<DashboardSidebarSelectEvent>(sidebarEvent);
+    on<PdfReportDownloadEvent>(reportDownloadEvent);
     
   }
 final ImagePicker _picker = ImagePicker();
@@ -57,5 +60,9 @@ final ImagePicker _picker = ImagePicker();
 
   FutureOr<void> sidebarEvent(DashboardSidebarSelectEvent event, Emitter<DashboardState> emit) {
      emit(DashboardInitialState(currentitem: event.item));
+  }
+
+  FutureOr<void> reportDownloadEvent(PdfReportDownloadEvent event, Emitter<DashboardState> emit) {
+    PdfService().printCustomersPdf(reportList);
   }
 }

@@ -35,72 +35,101 @@ class _MobileDashboardState extends State<MobileDashboard> {
         }
       },
       builder: (context, state) {
-        if(state is DashboardInitialState){
-        return SafeArea(
-          child: Scaffold(
-            appBar: AppBar(
-              leading: Builder(
-                builder: (BuildContext context) {
-                  return IconButton(
-                    icon: const Icon(
-                      Icons.menu,
-                      color: darkBlack,
+        if (state is DashboardInitialState) {
+          return SafeArea(
+            child: Scaffold(
+              appBar: AppBar(
+                leading: Builder(
+                  builder: (BuildContext context) {
+                    return IconButton(
+                      icon: const Icon(
+                        Icons.menu,
+                        color: darkBlack,
+                      ),
+                      onPressed: () {
+                        Scaffold.of(context).openDrawer();
+                      },
+                      tooltip: MaterialLocalizations.of(context)
+                          .openAppDrawerTooltip,
+                    );
+                  },
+                ),
+                title: const Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Hello Jaswanth",
+                      style: TextStyle(
+                          color: Color.fromARGB(255, 104, 103, 103),
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold),
                     ),
-                    onPressed: () {
-                      Scaffold.of(context).openDrawer();
-                    },
-                    tooltip:
-                        MaterialLocalizations.of(context).openAppDrawerTooltip,
-                  );
+                    Text(
+                      'Welcome back!',
+                      style: TextStyle(
+                          color: Color.fromARGB(255, 104, 103, 103),
+                          fontSize: 15),
+                    )
+                  ],
+                ),
+                actions: [
+                  const Padding(
+                      padding: EdgeInsets.all(9), child: SearchFormField()),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  IconButton(
+                      onPressed: () {},
+                      icon: const Icon(
+                        Icons.notifications_active_outlined,
+                        color: darkGrey,
+                      )),
+                  state.currentitem == SidebarItems.dashboard
+                      ? IconButton(
+                          onPressed: () {
+                            showDialog(
+                                context: context,
+                                builder: ((contexta) => BlocProvider(
+                                      create: (contextb) => DashboardBloc(),
+                                      child: LogoutAlert(context),
+                                    )));
+                          },
+                          icon: const Icon(
+                            Icons.logout_outlined,
+                            color: darkGrey,
+                          ))
+                      : const SizedBox(
+                          width: 1,
+                        ),
+                  const SizedBox(
+                    width: 5,
+                  ),
+                ],
+                backgroundColor: white,
+              ),
+              backgroundColor: white,
+              drawer: DrawerWidget(
+                currentitem: state.currentitem!,
+                onSelectedItems: (item) {
+                  BlocProvider.of<DashboardBloc>(context)
+                      .add(DashboardSidebarSelectEvent(item: item));
+                  Navigator.pop(context);
                 },
               ),
-              title: const Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-               mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Text("Hello Jaswanth",style:TextStyle(color:Color.fromARGB(255, 104, 103, 103),fontSize: 20,fontWeight: FontWeight.bold ) ,),
-                  Text('Welcome back!',style:TextStyle(color:Color.fromARGB(255, 104, 103, 103),fontSize: 15),)
-                ],
-              ),
-              actions:  [
-                const Padding(padding: EdgeInsets.all(9), child: SearchFormField()),
-                const SizedBox(
-                  width: 10,
-                ),
-               IconButton(onPressed: (){}, icon: const Icon(Icons.notifications_active_outlined,color: darkGrey,)),
-               state.currentitem == SidebarItems.dashboard?
-               IconButton(onPressed:(){ showDialog(
-                        context: context,
-                        builder: ((contexta) => BlocProvider(
-                              create: (contextb) => DashboardBloc(),
-                              child: LogoutAlert(context),
-                            )));} , icon:   const Icon(Icons.logout_outlined,color: darkGrey,)):const SizedBox(width: 1,),
-                const SizedBox(
-                  width: 5,
-                ),
-              ],
-              backgroundColor: white,
+              body: getScreen(state.currentitem),
             ),
-            backgroundColor: white,
-            drawer: DrawerWidget(
-              currentitem: state.currentitem!,
-                      onSelectedItems: (item) {
-                        BlocProvider.of<DashboardBloc>(context)
-                            .add(DashboardSidebarSelectEvent(item: item));
-                            Navigator.pop(context);
-                      },
-            ),
-            body: getScreen(state.currentitem),
-          ),
-        );
-      }
-      else{
-        return const SizedBox(height: 5,);
-      }
+          );
+        } else {
+          return const SizedBox(
+            height: 5,
+          );
+        }
       },
     );
   }
-   Widget getScreen(currentitem) {
+
+  Widget getScreen(currentitem) {
     switch (currentitem) {
       case SidebarItems.accounts:
         return const AccountWidget(
@@ -116,10 +145,13 @@ class _MobileDashboardState extends State<MobileDashboard> {
           ),
         );
       case SidebarItems.report:
-        return const ReportWidget();
+        return  BlocProvider(
+          create: (context) => DashboardBloc(),
+          child: const ReportWidget(),
+        );
       case SidebarItems.myspendings:
         return const Myspendings(
-          screen:"mobile",
+          screen: "mobile",
         );
       default:
         return const LoadingWidget();

@@ -52,6 +52,6 @@ FutureOr<void> insertProfile(InsertProfileEvent event, Emitter<SignupState> emit
 
 
   FutureOr<void> signupLoginNavigateEvent(SignupLoginNavigateEvent event, Emitter<SignupState> emit) {
-    emit(SignupSuccessState(message: ''));
+    emit(SignupSuccessNavigateState());
   }
 }

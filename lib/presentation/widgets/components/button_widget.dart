@@ -1,3 +1,4 @@
+import 'package:dashboard_task/core/utils/colors.dart';
 import 'package:flutter/material.dart';
 
 class ButtonWidget extends StatelessWidget {
@@ -14,7 +15,7 @@ class ButtonWidget extends StatelessWidget {
     return Column(
       children: [
         const SizedBox(height: 10,),
-        ElevatedButton(onPressed: onpressed,style: ElevatedButton.styleFrom(minimumSize: Size(MediaQuery.of(context).size.width*0.45,MediaQuery.of(context).size.height*0.07)), child:Text(value!),)
+        ElevatedButton(onPressed: onpressed,style: ElevatedButton.styleFrom(minimumSize: Size(MediaQuery.of(context).size.width*0.45,MediaQuery.of(context).size.height*0.07),backgroundColor: lightBlueAccent), child:Text(value!,style: const TextStyle(color: white),),)
       ],
     );
   }

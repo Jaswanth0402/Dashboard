@@ -58,27 +58,27 @@ class TransactionDetails extends StatelessWidget {
           ],
         ),
         const SizedBox(
-          height: 8,
+          height: 6,
         ),
         const Expanded(
           child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             Text(Strings.lastTransaction),
             SizedBox(
-              height: 8,
+              height: 6,
             ),
             LastTransaction(
                 icons: Icons.smart_display_rounded,
                 title: Strings.figma,
                 amount: Strings.amoutcard3),
             SizedBox(
-              height: 8,
+              height: 6,
             ),
             LastTransaction(
                 icons: Icons.add_business_outlined,
                 title:Strings.dribble,
                 amount:Strings.amoutcard4),
             SizedBox(
-              height: 8,
+              height: 6,
             ),
             LastTransaction(
                 icons: Icons.access_alarm_outlined,

@@ -85,7 +85,10 @@ class _DesktopScaffoldState extends State<DesktopDashboard> {
           ),
         );
       case SidebarItems.report:
-        return const ReportWidget();
+        return  BlocProvider(
+          create: (context) => DashboardBloc(),
+          child: const ReportWidget(),
+        );
       case SidebarItems.myspendings:
         return const Myspendings(
           screen: "desktop",

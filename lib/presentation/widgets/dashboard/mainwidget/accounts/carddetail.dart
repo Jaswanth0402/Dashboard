@@ -11,6 +11,7 @@ class CardDetails extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8),
       child: Card(
+        color: white,
         elevation: 6,
         shape: const RoundedRectangleBorder(),
         child: Padding(

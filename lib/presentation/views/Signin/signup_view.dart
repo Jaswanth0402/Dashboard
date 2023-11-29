@@ -32,6 +32,10 @@ class SignupView extends StatelessWidget {
         });
         context.router.pushNamed(Strings.loginroute);
        }
+       if(state is SignupSuccessNavigateState){
+          
+        context.router.pushNamed(Strings.loginroute);
+       }
        if(state is SignupErrorState){
         FToast toast =FToast();
          toast.init(context);

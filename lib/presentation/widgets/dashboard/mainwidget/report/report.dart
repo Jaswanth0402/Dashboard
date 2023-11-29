@@ -1,6 +1,8 @@
+import 'package:dashboard_task/bloc/dashboard/bloc/dashboard_bloc.dart';
 import 'package:dashboard_task/core/utils/colors.dart';
 import 'package:dashboard_task/data/models/report_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/constants/string.dart';
 import '../../../../../core/utils/pdf_service.dart';
@@ -28,12 +30,18 @@ class _ReportWidgetState extends State<ReportWidget> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              ElevatedButton.icon( 
-                onPressed: (){
-          PdfService().printCustomersPdf(reportList);
-        } , 
-             icon: const Icon(Icons.print), 
-             label: const Text(Strings.report)),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  ElevatedButton.icon( 
+                    onPressed: (){
+                            BlocProvider.of<DashboardBloc>(context).add(PdfReportDownloadEvent());
+                          } , 
+                            style: ElevatedButton.styleFrom(backgroundColor: lightBlueAccent),
+                               icon: const Icon(Icons.print,color: white,), 
+                               label: const Text(Strings.report,style: TextStyle(color: white),)),
+                ],
+              ),
               FittedBox(
                 child: DataTable(
                   columns: const [

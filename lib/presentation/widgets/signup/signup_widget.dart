@@ -120,9 +120,10 @@ class _SignupWidgetState extends State<SignupWidget> {
                                             .add(InsertProfileEvent(
                                                 source: ImageSource.gallery));
                                       },
+                                      style: ElevatedButton.styleFrom(backgroundColor: lightBlueAccent),
                                       icon: const Icon(
-                                          Icons.upload_file_outlined),
-                                      label: const Text("choose file")),        
+                                          Icons.upload_file_outlined,color: white,),
+                                      label: const Text("choose file",style: TextStyle(color: white),)),        
                                
                                 ],
                               ),
