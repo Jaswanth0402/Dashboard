@@ -9,8 +9,8 @@ import '../../views/dashboard/dashboard_view.dart';
 class DashBoardPage extends StatelessWidget {
   static const keyPrefix = 'DashBoardPage';
   const DashBoardPage({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

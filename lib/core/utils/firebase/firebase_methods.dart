@@ -3,7 +3,6 @@
 // ignore_for_file: avoid_print
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:dashboard_task/data/models/user_model.dart';
 
 import '../../../data/models/response_model.dart';
 

@@ -291,9 +291,9 @@
     },
     {
       "name": "flutter_lints",
-      "rootUri": "file:///Users/novastrid/.pub-cache/hosted/pub.dev/flutter_lints-2.0.3",
+      "rootUri": "file:///Users/novastrid/.pub-cache/hosted/pub.dev/flutter_lints-3.0.1",
       "packageUri": "lib/",
-      "languageVersion": "2.19"
+      "languageVersion": "3.0"
     },
     {
       "name": "flutter_plugin_android_lifecycle",
@@ -429,7 +429,7 @@
     },
     {
       "name": "lints",
-      "rootUri": "file:///Users/novastrid/.pub-cache/hosted/pub.dev/lints-2.1.1",
+      "rootUri": "file:///Users/novastrid/.pub-cache/hosted/pub.dev/lints-3.0.0",
       "packageUri": "lib/",
       "languageVersion": "3.0"
     },
@@ -734,7 +734,7 @@
       "languageVersion": "3.1"
     }
   ],
-  "generated": "2023-11-29T11:07:12.143274Z",
+  "generated": "2023-11-30T06:13:06.847468Z",
   "generator": "pub",
   "generatorVersion": "3.2.1"
 }

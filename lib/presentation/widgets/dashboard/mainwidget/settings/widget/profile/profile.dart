@@ -51,7 +51,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                     child: Column(
                       children: [
                         ListTile(
-                          subtitle: Container(
+                          subtitle: SizedBox(
                             child: Column(children: [
                               ImageProfile(
                                   image: e.data().toString().contains('image')

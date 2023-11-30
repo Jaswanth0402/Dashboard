@@ -26,7 +26,7 @@ class SettingsDrawer extends StatelessWidget {
                           child: 
                            Column(
                             children: [
-                              ...SettingItems.all.map(ListTileWidget).toList()
+                              ...SettingItems.all.map(ListTileWidget)
                             ],
                           ),
                         ),
@@ -46,7 +46,7 @@ class SettingsDrawer extends StatelessWidget {
                           child: 
                            Column(
                             children: [
-                              ...SettingItems.all.map(ListTileWidget).toList()
+                              ...SettingItems.all.map(ListTileWidget)
                             ],
                           ),
                         ),

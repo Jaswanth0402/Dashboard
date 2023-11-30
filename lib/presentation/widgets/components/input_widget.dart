@@ -25,7 +25,7 @@ class InputWidget extends StatelessWidget {
   final AutovalidateMode? autoValidateMode;
 
   const InputWidget({
-    Key? key,
+    super.key,
     required this.textInputAction,
     required this.editTextType,
     required this.titles,
@@ -44,7 +44,7 @@ class InputWidget extends StatelessWidget {
     this.controller,
     this.formKey,
     this.autoValidateMode,
-  }) : super(key: key);
+  });
 
 
   @override

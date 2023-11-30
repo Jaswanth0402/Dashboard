@@ -66,7 +66,7 @@ class DrawerWidget extends StatelessWidget {
                 )
               ],
             )),
-            ...SidebarItems.all.map(ListTileWidget).toList()
+            ...SidebarItems.all.map(ListTileWidget)
           ],
         ),
       ),

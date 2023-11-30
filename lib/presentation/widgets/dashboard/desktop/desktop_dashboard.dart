@@ -14,7 +14,7 @@ import '../mainwidget/settings/settings.dart';
 import '../mainwidget/report/report.dart';
 
 class DesktopDashboard extends StatefulWidget {
-  const DesktopDashboard({Key? key}) : super(key: key);
+  const DesktopDashboard({super.key});
 
   @override
   State<DesktopDashboard> createState() => _DesktopScaffoldState();

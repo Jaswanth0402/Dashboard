@@ -9,8 +9,8 @@ import '../../views/Login/login_view.dart';
 class LoginPage extends StatelessWidget {
    static const keyPrefix = 'LoginPage';
   const LoginPage({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

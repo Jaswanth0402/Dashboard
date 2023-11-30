@@ -9,8 +9,8 @@ import '../../views/Signin/signup_view.dart';
 class SignupPage extends StatelessWidget {
    static const keyPrefix = 'SignupPage';
   const SignupPage({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
  
 
   @override
