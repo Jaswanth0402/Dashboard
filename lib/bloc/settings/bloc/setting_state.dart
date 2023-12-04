@@ -9,3 +9,9 @@ final class SettingInitialState extends SettingState {
 
    SettingInitialState({ required this.currentitem});
 }
+
+final class ProfileLoadedState extends SettingState{
+  final Stream<QuerySnapshot>user;
+ 
+  ProfileLoadedState({required this.user});
+}

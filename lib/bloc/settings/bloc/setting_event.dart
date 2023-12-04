@@ -7,5 +7,8 @@ final class SettingDrawerSelectEvent extends SettingEvent{
   final SettingItem item;
 
   SettingDrawerSelectEvent({required this.item});
-}
 
+}
+final class ProfileLoadEvent extends SettingEvent{
+  
+}

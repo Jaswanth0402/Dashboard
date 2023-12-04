@@ -49,22 +49,8 @@ static Future<Response> addUser ({
     final String? email
   }){
    
-    print('email:$email');
     return
     _Collection.where("email", isEqualTo: email).snapshots();
-//     .get().then(
-//   (querySnapshot) {
-//     print("Successfully completed");
-//     // for (var docSnapshot in querySnapshot.docs) {
-//     //   print('${docSnapshot.id} => ${docSnapshot.data()}');
-//     // }
-//      user = querySnapshot.docs[0].data();
-  
-   
-//   },
-  
-//   onError: (e) => print("Error completing: $e"),
-// );
 
   }
 }

@@ -8,7 +8,6 @@ import 'component/settings_drawer.dart';
 import 'widget/accountsettings/account_setting.dart';
 import 'widget/profile/profile.dart';
 
-
 class SettingItems {
   static const profile = SettingItem(Strings.profile);
   static const accountsettings = SettingItem(Strings.accountsettings);
@@ -19,23 +18,25 @@ class SettingItems {
   static const all = <SettingItem>[
     profile,
     accountsettings,
-    
   ];
 }
 
 class SettingWidget extends StatelessWidget {
-final String screen;
-  const SettingWidget(
-      {super.key, required this.screen});
+  final String screen;
+  const SettingWidget({super.key, required this.screen});
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<SettingBloc, SettingState>(
-      builder: (context, state) {
-        if(state is SettingInitialState){
+    return BlocBuilder<SettingBloc, SettingState>(builder: (context, state) {
+      if (state is SettingInitialState) {
         return SafeArea(
           child: Container(
-            decoration: const BoxDecoration(image: DecorationImage(image: AssetImage('image/back2.jpeg',),fit: BoxFit.cover)),
+            decoration: const BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage(
+                      'image/back2.jpeg',
+                    ),
+                    fit: BoxFit.cover)),
             child: Column(
               children: [
                 Container(
@@ -69,64 +70,68 @@ final String screen;
                     padding: const EdgeInsets.all(10),
                     height: MediaQuery.of(context).size.height,
                     width: MediaQuery.of(context).size.width,
-                    child:
-                    screen =='mobile'?
-                    Column(children: [
-                      Expanded(
-                          flex: 1,
-                          child: SettingsDrawer(
-                            screen:screen,
-                            currentitems: state.currentitem,
-            onSelectedmenu: (items) {
-               BlocProvider.of<SettingBloc>(context).add(SettingDrawerSelectEvent(item: items));
-            },
-                          )),
-                      const SizedBox(
-                        width: 18,
-                      ),
-                      Expanded(
-                          flex: 5,
-                          child: SingleChildScrollView(child: getScreen(state.currentitem)))
-                    ]):
-                     Row(children: [
-                      Expanded(
-                          flex: 1,
-                          child: SettingsDrawer(
-                            screen: screen,
-                            currentitems: state.currentitem,
-            onSelectedmenu: (items) {
-               BlocProvider.of<SettingBloc>(context).add(SettingDrawerSelectEvent(item: items));
-            },
-                          )),
-                      const SizedBox(
-                        width: 18,
-                      ),
-                      Expanded(
-                          flex: 5,
-                          child: SingleChildScrollView(child: getScreen(state.currentitem)))
-                    ]),
+                    child: screen == 'mobile'
+                        ? Column(children: [
+                            Expanded(
+                                flex: 1,
+                                child: SettingsDrawer(
+                                  screen: screen,
+                                  currentitems: state.currentitem,
+                                  onSelectedmenu: (items) {
+                                    BlocProvider.of<SettingBloc>(context).add(
+                                        SettingDrawerSelectEvent(item: items));
+                                  },
+                                )),
+                            const SizedBox(
+                              width: 18,
+                            ),
+                            Expanded(
+                                flex: 5,
+                                child: SingleChildScrollView(
+                                    child: getScreen(state.currentitem)))
+                          ])
+                        : Row(children: [
+                            Expanded(
+                                flex: 1,
+                                child: SettingsDrawer(
+                                  screen: screen,
+                                  currentitems: state.currentitem,
+                                  onSelectedmenu: (items) {
+                                    BlocProvider.of<SettingBloc>(context).add(
+                                        SettingDrawerSelectEvent(item: items));
+                                  },
+                                )),
+                            const SizedBox(
+                              width: 18,
+                            ),
+                            Expanded(
+                                flex: 5,
+                                child: SingleChildScrollView(
+                                    child: getScreen(state.currentitem)))
+                          ]),
                   ),
                 ),
               ],
             ),
           ),
         );
+      } else {
+        return const SizedBox(
+          height: 5,
+        );
       }
-      else {
-          return const SizedBox(
-            height: 5,
-          );
-        }
-      }
-    );
+    });
   }
 
   Widget getScreen(currentitems) {
     switch (currentitems) {
       case SettingItems.accountsettings:
-        return  AccountSetting(screen:screen);
+        return AccountSetting(screen: screen);
       case SettingItems.profile:
-        return const ProfileWidget();
+        return  BlocProvider(
+          create: (context) => SettingBloc(),
+          child: const ProfileWidget(),
+        );
       default:
         return const SizedBox(
           child: SizedBox(
