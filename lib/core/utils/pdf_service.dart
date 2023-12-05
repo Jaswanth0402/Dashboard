@@ -2,12 +2,13 @@ import 'dart:convert';
 // ignore: avoid_web_libraries_in_flutter
 import 'dart:html';
 import 'dart:ui';
-
+import 'package:dashboard_task/core/utils/download.dart';
 import 'package:dashboard_task/data/models/report_model.dart';
-
+import 'package:flutter/foundation.dart';
 import 'package:syncfusion_flutter_pdf/pdf.dart';
 
 class PdfService {
+  
   Future<void> printCustomersPdf(List<ReportModel> data) async {
     //Create a new PDF document
     PdfDocument document = PdfDocument();
@@ -55,15 +56,26 @@ class PdfService {
         page: document.pages.add(), bounds: const Rect.fromLTWH(0, 0, 0, 0));
     List<int> bytes = await document.save();
     
-    //Download document
+
+  if(kIsWeb){
     AnchorElement(
         href:
             "data:application/octet-stream;charset=utf-16le;base64,${base64.encode(bytes)}")
       ..setAttribute("download", "report.pdf")
       ..click();
+  }
+  else{
+   ReportDownload.saveAndLaunchFile(bytes, "report.pdf");
+  }
+    //Download document
+    
+    
    
     //Dispose the document
     document.dispose();
      
+   
+
   }
+   
 }
