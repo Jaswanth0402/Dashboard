@@ -1,13 +1,12 @@
 import 'dart:async';
 import 'dart:convert';
-import 'dart:typed_data';
+import 'dart:io';
 import 'package:bloc/bloc.dart';
 import 'package:dashboard_task/core/constants/string.dart';
 import 'package:dashboard_task/core/utils/firebase/firebase_methods.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:image_picker/image_picker.dart';
-// ignore: depend_on_referenced_packages
-import 'package:meta/meta.dart';
 part 'signin_event.dart';
 part 'signin_state.dart';
 
@@ -40,13 +39,23 @@ FutureOr<void> insertProfile(InsertProfileEvent event, Emitter<SignupState> emit
    XFile? pickedFile = await _picker.pickImage(
     source: ImageSource.gallery,  
   );
-  
-  if(pickedFile !=null){
+  if(kIsWeb){
+    if(pickedFile !=null){
     Uint8List filePicked =await pickedFile.readAsBytes();
     var imageconvert = base64Encode(filePicked);
     
     emit(SignupOnLoadState(image:imageconvert));
   }
+  }
+  else{
+    if(pickedFile !=null){
+      final filePicked =  File(pickedFile.path);
+      Uint8List bytes = await filePicked.readAsBytes();
+      String imageconvert = base64.encode(bytes);
+      emit(SignupOnLoadState(image:imageconvert));
+    }
+  }
+  
   
   }
 

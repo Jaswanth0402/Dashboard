@@ -1,11 +1,12 @@
-import 'dart:convert';
-// ignore: avoid_web_libraries_in_flutter
-import 'dart:html';
 import 'dart:ui';
 import 'package:dashboard_task/core/utils/download.dart';
 import 'package:dashboard_task/data/models/report_model.dart';
 import 'package:flutter/foundation.dart';
 import 'package:syncfusion_flutter_pdf/pdf.dart';
+import 'dart:async';
+import 'dart:convert';
+// ignore: unused_import, avoid_web_libraries_in_flutter
+import 'dart:js' as js;
 
 class PdfService {
   
@@ -58,11 +59,16 @@ class PdfService {
     
 
   if(kIsWeb){
-    AnchorElement(
-        href:
-            "data:application/octet-stream;charset=utf-16le;base64,${base64.encode(bytes)}")
-      ..setAttribute("download", "report.pdf")
-      ..click();
+    // AnchorElement(
+    //     href:
+    //         "data:application/octet-stream;charset=utf-16le;base64,${base64.encode(bytes)}")
+    //   ..setAttribute("download", "report.pdf")
+    //   ..click();
+    js.context['pdfData'] = base64.encode(bytes);
+    js.context['filename'] = 'report.pdf';
+    Timer.run(() {
+     js.context.callMethod('download');
+    });
   }
   else{
    ReportDownload.saveAndLaunchFile(bytes, "report.pdf");
